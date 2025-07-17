@@ -11,22 +11,22 @@ export class CartsServices implements PCart {
     }
 
     async getAllCarts(): Promise<ICart> {
-        return await this.clientHttp.get(`${this.basePath}`);
+        return await this.clientHttp.get(this.basePath);
     }
 
     async getCartById(id: number): Promise<ICart> {
-        return await this.clientHttp.get(`${this.basePath}/${id}`)
+        return await this.clientHttp.getById(this.basePath, id)
     }
     
-    async updateCart(id: number): Promise<ICart> {
-        return await this.clientHttp.get(`${this.basePath}/${id}`)
+    async updateCart(id: number, cart: ICart): Promise<ICart> {
+        return await this.clientHttp.put(this.basePath, id, cart);
     }
     
-    async addCart(formData: FormData): Promise<ICart> {
-        return await this.clientHttp.get(`${this.basePath}`);
+    async addCart(cart: ICart): Promise<ICart> {
+        return await this.clientHttp.post(this.basePath, cart);
     }
     
     async deleteCart(id: number): Promise<ICart> {
-        return await this.clientHttp.get(`${this.basePath}/${id}`)
+        return await this.clientHttp.delete(this.basePath, id);
     }
 }

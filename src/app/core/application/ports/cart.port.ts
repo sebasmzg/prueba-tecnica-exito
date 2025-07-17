@@ -5,9 +5,9 @@ export interface PCart {
 
     getCartById(id: number):Promise<ICart>
 
-    updateCart(id: number):Promise<ICart>
+    updateCart(id: number, cart: ICart):Promise<ICart>
 
-    addCart(formData: FormData): Promise<ICart>
+    addCart(cart: ICart): Promise<ICart>
 
     deleteCart(id: number):Promise<ICart>
 }

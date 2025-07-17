@@ -10,10 +10,10 @@ export class ProductsServices implements PProducts {
         this.clientHttp = new HttpClient();
     }
     async getAllProducts(): Promise<IProduct[]> {
-        return await this.clientHttp.get(`${this.basePath}`);
+        return await this.clientHttp.get(this.basePath);
     }
     async getProductById(id: number): Promise<IProduct> {
-        return await this.clientHttp.get(`${this.basePath}/${id}`)
+        return await this.clientHttp.getById(this.basePath, id)
     }
 
 }

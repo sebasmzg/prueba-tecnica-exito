@@ -4,7 +4,7 @@ import { IProduct } from "@/app/core/application/dto";
 
 export class ProductsServices implements PProducts {
     private clientHttp: HttpClient;
-    private basePath: string = "projects";
+    private basePath: string = "products";
     
     constructor(){
         this.clientHttp = new HttpClient();

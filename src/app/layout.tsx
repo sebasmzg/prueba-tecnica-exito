@@ -22,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lato.variable}`} cz-shortcut-listen="true">
+        header
         {children}
+        footer
       </body>
     </html>
   );

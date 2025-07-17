@@ -1,8 +1,13 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div>Holaa</div>
-  );
+    <div>Holaaç
+      <Link href={'/products'}>
+        Productos
+      </Link>
+      </div>
+    );
+      
 }

@@ -1,0 +1,56 @@
+@import '../../../styles/variables.scss';
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: $space-xs;
+  transition: color $transition;
+}
+
+// Variantes de color usando tu paleta
+.default {
+  color: $text-secondary; // Color gris por defecto
+}
+
+.primary {
+  color: $primary; // #4682A9 (dark-blue)
+}
+
+.secondary {
+  color: $secondary; // #749BC2 (medium-blue)
+}
+
+// Asterisco para campos requeridos
+.required {
+  color: $error;
+  margin-left: $space-xs;
+  font-weight: bold;
+}
+
+// Estados hover
+.label:hover {
+  &.default {
+    color: $text-primary;
+  }
+  
+  &.primary {
+    color: $secondary;
+  }
+  
+  &.secondary {
+    color: $primary;
+  }
+}
+
+// Para labels asociados a inputs con error
+.label.error {
+  color: $error;
+}
+
+// Para labels asociados a inputs deshabilitados
+.label.disabled {
+  color: $text-muted;
+  cursor: not-allowed;
+}

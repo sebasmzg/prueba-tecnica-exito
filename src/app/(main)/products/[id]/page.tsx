@@ -96,6 +96,11 @@ export default function ProductDetailPage() {
               )
             }
           </div>
+          <Link href={Pages.cart} >
+          <button>
+            Cart
+          </button>
+        </Link>
         </div>
       </div>
     </div>

@@ -1,0 +1,54 @@
+@import '../../../styles/variables.scss';
+
+.errorMessage {
+  padding: $space-sm $space-md;
+  background-color: rgba(239, 68, 68, 0.1); // Error light background
+  border: 1px solid $error;
+  border-radius: $radius;
+  color: $error;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-top: $space-xs;
+  
+  // Ícono de error opcional con pseudo-elemento
+  &::before {
+    content: "⚠️";
+    margin-right: $space-xs;
+    font-size: 0.75rem;
+  }
+
+  // Animación suave de entrada
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Variante para diferentes niveles de error
+.errorMessage.warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-color: $warning;
+  color: $warning;
+
+  &::before {
+    content: "⚠️";
+  }
+}
+
+.errorMessage.info {
+  background-color: rgba(70, 130, 169, 0.1); // Usando tu primary color
+  border-color: $primary;
+  color: $primary;
+
+  &::before {
+    content: "ℹ️";
+  }
+}

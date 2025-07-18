@@ -1,0 +1,101 @@
+@import '../../../styles/variables.scss';
+
+.select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: $space-sm $space-md;
+  padding-right: 2.5rem; // Espacio para la flecha
+  border: 1px solid $border;
+  border-radius: $radius;
+  background-color: $surface;
+  color: $text-primary;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  transition: all $transition;
+  cursor: pointer;
+  
+  // Flecha personalizada usando tu paleta
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23749BC2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right $space-sm center;
+  background-size: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: $border-focus;
+    box-shadow: $shadow-focus;
+    
+    // Cambiar color de la flecha en focus
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234682A9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $accent; // #91C8E4 (light-blue)
+    
+    // Flecha más oscura en hover
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234682A9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  }
+
+  &.error {
+    border-color: $error;
+    
+    &:focus {
+      border-color: $error;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+    }
+    
+    // Flecha roja para estado de error
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  }
+
+  &:disabled {
+    background-color: #f5f5f5;
+    color: $text-muted;
+    cursor: not-allowed;
+    opacity: 0.6;
+    
+    // Flecha gris para estado disabled
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  }
+
+  // Estilos para las opciones
+  option {
+    background-color: $surface;
+    color: $text-primary;
+    padding: $space-xs;
+    
+    &:hover,
+    &:focus {
+      background-color: $accent;
+      color: $text-primary;
+    }
+    
+    &:disabled {
+      color: $text-muted;
+      background-color: #f5f5f5;
+    }
+  }
+
+  // Placeholder styling
+  option[value=""] {
+    color: $text-muted;
+  }
+}
+
+// Variante para select múltiple
+.select[multiple] {
+  padding-right: $space-md; // Sin espacio para flecha
+  background-image: none; // Sin flecha
+  height: auto;
+  min-height: 6rem;
+  
+  option {
+    padding: $space-xs $space-sm;
+    
+    &:checked {
+      background-color: $primary;
+      color: $text-on-primary;
+    }
+  }
+}

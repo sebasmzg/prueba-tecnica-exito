@@ -1,0 +1,143 @@
+@import '../../../styles/variables.scss';
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $radius;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition;
+  text-decoration: none;
+  
+  &:focus {
+    outline: none;
+    box-shadow: $shadow-focus;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  &.loading {
+    cursor: wait;
+  }
+}
+
+.primary {
+  background-color: $primary; 
+  color: $text-on-primary;
+  border: 1px solid transparent;
+
+  &:hover:not(:disabled) {
+    background-color: $secondary; 
+    transform: translateY(-1px);
+    box-shadow: $shadow;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+.secondary {
+  background-color: $accent; 
+  color: $text-primary;
+  border: 1px solid $border;
+
+  &:hover:not(:disabled) {
+    background-color: $light-blue;
+    border-color: $medium-blue;
+    transform: translateY(-1px);
+    box-shadow: $shadow;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+.success {
+  background-color: $success;
+  color: $text-on-primary;
+  border: 1px solid transparent;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: $shadow;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+.danger {
+  background-color: $error;
+  color: $text-on-primary;
+  border: 1px solid transparent;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: $shadow;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+.warning {
+  background-color: $warning;
+  color: $text-on-primary;
+  border: 1px solid transparent;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: $shadow;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+// Sizes
+.small {
+  padding: $space-xs $space-sm;
+  font-size: 0.875rem;
+  line-height: 1.25;
+}
+
+.medium {
+  padding: $space-sm $space-md;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.large {
+  padding: $space-md $space-lg;
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.spinner {
+  margin-right: $space-sm;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

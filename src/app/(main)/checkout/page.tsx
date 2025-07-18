@@ -11,11 +11,46 @@ export default function CheckoutPage() {
   const { clearCart, items, total } = useCart();
   const router = useRouter();
   const handleCheckout = async (data: CheckoutFormData) => {
+    const orderSummary = `
+        🛒 CONFIRM YOUR ORDER
+
+👤 Customer: ${data.firstName} ${data.lastName}
+📧 Email: ${data.email}
+📱 Phone: ${data.phone}
+
+📍 Delivery Address:
+${data.address}
+${data.city}, ${data.department}
+Postal Code: ${data.postalCode}
+
+🛍️ Items (${items.length}):
+${items
+  .map(
+    (item) =>
+      `• ${item.product.title} x${item.quantity} - $${(
+        item.product.price * item.quantity
+      ).toFixed(2)}`
+  )
+  .join("\n")}
+
+💰 TOTAL: $${total}
+💳 Payment: ****${data.cardNumber.slice(-4)}
+
+⚠️ Are you sure you want to complete this purchase?`;
+
+    const confirmed = confirm(orderSummary);
+
+    if (!confirmed) {
+      console.log("❌ Purchase cancelled by user");
+      return; // Salir si el usuario cancela
+    }
+
     setLoading(true);
     setError(null);
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
+
       alert(`Payment sucessful ✅🤑
         Thank you ${data.firstName} ${data.lastName}!
             Your order has been processed.
@@ -73,7 +108,7 @@ export default function CheckoutPage() {
           <hr />
           <div>
             <span>Total:</span>
-            <span>${total}</span>
+            <span>${total.toFixed(2)}</span>
           </div>
         </div>
       </div>

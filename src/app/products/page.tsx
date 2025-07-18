@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ProductsServices } from "../infrastructure/services/products.service";
 import { IProduct } from "../core/application/dto";
+import Image from "next/image";
 
 
 async function getProducts(): Promise<IProduct[]> {
@@ -24,11 +25,13 @@ export default async function Home() {
         {products.map((product) => (
           <div key={product.id} className="border rounded-lg p-4 shadow-md">
             <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
+            <div><Image width={200} height={200} src={product.image} alt={`${product.title} image`} /></div>
             <p className="text-gray-600 mb-4">{product.description}</p>
             <p className="text-xl font-bold mb-4">${product.price}</p>
             
             <Link 
               href={`/products/${product.id}`}
+              target="blank"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
             >
               Ver detalles

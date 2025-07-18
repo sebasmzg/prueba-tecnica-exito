@@ -1,6 +1,7 @@
 import { ProductsServices } from "../../infrastructure/services/products.service";
 import { IProduct } from "../../core/application/dto";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProductPageProps {
   params: { id: number };
@@ -32,12 +33,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div className="container mx-auto p-4">
-      <Link href="/" className="text-blue-500 hover:underline mb-4 inline-block">
+      <Link href="/products" className="text-blue-500 hover:underline mb-4 inline-block">
         ← Volver a productos
       </Link>
       
       <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
+        <Image src={product.image} width={200} height={200} alt={`${product.title} image`} />
         <p className="text-gray-600 mb-6">{product.description}</p>
         <p className="text-2xl font-bold text-green-600 mb-6">${product.price}</p>
         

@@ -1,51 +1,86 @@
-import { ProductsServices } from "../../infrastructure/services/products.service";
-import { IProduct } from "../../core/application/dto";
-import Link from "next/link";
-import Image from "next/image";
+'use client';
 
-interface ProductPageProps {
-  params: { id: number };
-}
+import { useParams } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useProductById } from '@/app/infrastructure/hooks/useProductById';
 
-async function getProduct(id: number): Promise<IProduct | null> {
-  const productsService = new ProductsServices();
-  try {
-    return await productsService.getProductById(id);
-  } catch (error) {
-    console.error("Error fetching product:", error);
-    return null;
+export default function ProductDetailPage() {
+  const params = useParams();
+  const productId = params.id as string;
+  
+  const { product, loading, error, refetch } = useProductById(productId);
+
+  if (loading) {
+    return (
+      <div>
+      </div>
+    );
   }
-}
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await getProduct(params.id);
+  if (error) {
+    return (
+      <div>
+        <div>
+          <div>
+            <p>{error}</p>
+            <button
+              onClick={refetch}
+              >
+              Intentar de nuevo
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
-      <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold text-red-600">Producto no encontrado</h1>
-        <Link href="/" className="text-blue-500 hover:underline mt-4 inline-block">
-          Volver al inicio
-        </Link>
+      <div>
+        <div>
+          <p>Producto no encontrado</p>
+          <Link 
+            href="/products"
+          >
+            Volver a productos
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <Link href="/products" className="text-blue-500 hover:underline mb-4 inline-block">
-        ← Volver a productos
-      </Link>
+    <div>
+      <div>
+        <Link 
+          href="/products"
+        >
+          ← Volver a productos
+        </Link>
+      </div>
       
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
-        <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-        <Image src={product.image} width={200} height={200} alt={`${product.title} image`} />
-        <p className="text-gray-600 mb-6">{product.description}</p>
-        <p className="text-2xl font-bold text-green-600 mb-6">${product.price}</p>
+      <div>
+        <div>
+          <Image 
+            width={500} 
+            height={500} 
+            src={product.image} 
+            alt={product.title}
+          />
+        </div>
         
-        <button className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors">
-          Agregar al carrito
-        </button>
+        <div>
+          <h1>{product.title}</h1>
+          <p>{product.description}</p>
+          <p>${product.price}</p>
+          
+          <div>
+            <button>
+              Agregar al carrito
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

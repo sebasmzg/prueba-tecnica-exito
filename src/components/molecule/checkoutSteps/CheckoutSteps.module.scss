@@ -1,0 +1,182 @@
+@import '../../../styles/variables.scss';
+
+.container {
+  background: $surface;
+  padding: $space-lg;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  margin-bottom: $space-xl;
+}
+
+.stepsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $space-lg;
+  }
+}
+
+.stepContainer {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-sm;
+  z-index: 2;
+  position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    width: 100%;
+    padding: $space-md;
+    border-radius: $radius;
+    background: rgba($accent, 0.05);
+    border: 1px solid transparent;
+  }
+}
+
+.stepCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: $transition;
+  border: 3px solid;
+}
+
+.stepTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  transition: $transition;
+
+  @media (max-width: 768px) {
+    flex: 1;
+    text-align: left;
+    margin-left: $space-md;
+  }
+}
+
+.checkIcon {
+  font-size: 1.25rem;
+  color: white;
+}
+
+.stepNumber {
+  font-size: 1rem;
+}
+
+// Estados de los pasos
+.step.pending {
+  .stepCircle {
+    background: $background;
+    border-color: $border;
+    color: $text-muted;
+  }
+  
+  .stepTitle {
+    color: $text-muted;
+  }
+
+  @media (max-width: 768px) {
+    border-color: $border;
+  }
+}
+
+.step.active {
+  .stepCircle {
+    background: $primary;
+    border-color: $primary;
+    color: white;
+    animation: pulse 2s infinite;
+  }
+  
+  .stepTitle {
+    color: $primary;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    background: rgba($primary, 0.1);
+    border-color: $primary;
+  }
+}
+
+.step.completed {
+  .stepCircle {
+    background: $success;
+    border-color: $success;
+    color: white;
+  }
+  
+  .stepTitle {
+    color: $success;
+  }
+
+  @media (max-width: 768px) {
+    background: rgba($success, 0.1);
+    border-color: $success;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(70, 130, 169, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(70, 130, 169, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(70, 130, 169, 0);
+  }
+}
+
+// Conectores
+.connector {
+  flex: 1;
+  height: 3px;
+  background: $border;
+  transition: $transition;
+  margin: 0 $space-md;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.connectorCompleted {
+  background: $success;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: $space-md;
+  }
+  
+  .stepCircle {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .stepTitle {
+    font-size: 0.8rem;
+  }
+}

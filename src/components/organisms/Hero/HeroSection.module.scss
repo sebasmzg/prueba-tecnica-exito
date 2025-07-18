@@ -1,0 +1,413 @@
+@import '../../../styles/variables.scss';
+
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+    rgba($primary, 0.1) 0%, 
+    rgba($secondary, 0.05) 50%, 
+    rgba($accent, 0.1) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  // Patrón de fondo animado
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 25% 25%, rgba($accent, 0.1) 1px, transparent 1px),
+                      radial-gradient(circle at 75% 75%, rgba($primary, 0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: backgroundMove 20s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes backgroundMove {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(20px) translateY(-20px); }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: $space-xl;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    padding: $space-lg;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-xl;
+  align-items: center;
+  min-height: 80vh;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+    text-align: center;
+  }
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+  animation: fadeInLeft 1s ease-out;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.2;
+  color: $text-primary;
+  margin: 0;
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+}
+
+.highlight {
+  background: linear-gradient(135deg, $primary, $secondary, $accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $primary, $secondary, $accent);
+    border-radius: 2px;
+    animation: underlineGrow 1.5s ease-out 0.5s both;
+  }
+}
+
+@keyframes underlineGrow {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: $text-secondary;
+  margin: 0;
+  max-width: 600px;
+
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+}
+
+.features {
+  display: flex;
+  gap: $space-lg;
+  margin: $space-lg 0;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: $space-md;
+  }
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  padding: $space-sm $space-md;
+  background: rgba($accent, 0.1);
+  border-radius: $radius;
+  border: 1px solid rgba($accent, 0.3);
+  animation: fadeInUp 0.8s ease-out both;
+
+  @for $i from 1 through 3 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{0.2 * $i}s;
+    }
+  }
+}
+
+.featureIcon {
+  font-size: 1.25rem;
+}
+
+.featureText {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $text-primary;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: $space-lg;
+  margin-top: $space-lg;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: $space-md;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.primaryLink,
+.secondaryLink {
+  text-decoration: none;
+  animation: fadeInUp 1s ease-out both;
+}
+
+.primaryLink {
+  animation-delay: 0.8s;
+}
+
+.secondaryLink {
+  animation-delay: 1s;
+}
+
+.primaryButton {
+  padding: $space-md $space-xl;
+  font-size: 1.125rem;
+  background: linear-gradient(135deg, $primary, $secondary);
+  box-shadow: 0 8px 25px rgba($primary, 0.4);
+  
+  &:hover {
+    background: linear-gradient(135deg, $secondary, $accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba($primary, 0.5);
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.secondaryButton {
+  padding: $space-md $space-xl;
+  font-size: 1.125rem;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+// Visual Content
+.visualContent {
+  animation: fadeInRight 1s ease-out;
+
+  @media (max-width: 1024px) {
+    order: -1;
+  }
+}
+
+.heroImage {
+  position: relative;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floatingCard {
+  position: absolute;
+  background: $surface;
+  border-radius: $radius;
+  padding: $space-lg;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid $border;
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  animation: float 6s ease-in-out infinite;
+  backdrop-filter: blur(10px);
+  min-width: 200px;
+
+  &:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  &:nth-child(2) {
+    top: 50%;
+    right: 10%;
+    animation-delay: 2s;
+  }
+
+  &:nth-child(3) {
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 4s;
+  }
+
+  @media (max-width: 768px) {
+    padding: $space-md;
+    min-width: 150px;
+    
+    &:nth-child(1) {
+      top: 10%;
+      left: 5%;
+    }
+
+    &:nth-child(2) {
+      top: 40%;
+      right: 5%;
+    }
+
+    &:nth-child(3) {
+      bottom: 10%;
+      left: 10%;
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+.cardIcon {
+  font-size: 2rem;
+  padding: $space-sm;
+  background: linear-gradient(135deg, $primary, $secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.cardTitle {
+  font-weight: bold;
+  color: $text-primary;
+  font-size: 0.875rem;
+}
+
+.cardSubtitle {
+  color: $text-secondary;
+  font-size: 0.75rem;
+}
+
+// Animaciones generales
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: auto;
+    padding: $space-lg 0;
+  }
+  
+  .container {
+    padding: $space-md;
+  }
+  
+  .floatingCard {
+    padding: $space-sm;
+    gap: $space-sm;
+    min-width: 120px;
+  }
+  
+  .cardTitle {
+    font-size: 0.8rem;
+  }
+  
+  .cardSubtitle {
+    font-size: 0.7rem;
+  }
+}

@@ -4,9 +4,9 @@ import { FormProvider } from "react-hook-form";
 import { DynamicFormProps } from "@/app/core/application/models/form.type";
 import styles from './DynamicForm.module.scss';
 import { useFormBuilder } from "@/app/infrastructure/hooks/UseFormBuilder";
-import { Button, Title } from "../atoms";
-import { ErrorMessage as GlobalErrorMessage } from "../atoms";
-import { FormField } from "../molecule/formField/FormField";
+import { Button, Title } from "../../atoms";
+import { ErrorMessage as GlobalErrorMessage } from "../../atoms";
+import { FormField } from "../../molecule/formField/FormField";
 
 export const DynamicForm = ({
   type,

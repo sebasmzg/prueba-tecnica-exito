@@ -1,0 +1,48 @@
+@import '../../../styles/variables.scss';
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $space-lg;
+  padding: $space-lg 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: $space-md;
+    padding: $space-md 0;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: $space-sm;
+  }
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-xl;
+  text-align: center;
+  min-height: 300px;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: $space-lg;
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $text-primary;
+  margin-bottom: $space-sm;
+}
+
+.emptyDescription {
+  color: $text-secondary;
+  font-size: 1rem;
+  max-width: 400px;
+}

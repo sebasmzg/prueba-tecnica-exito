@@ -1,0 +1,87 @@
+@import '../../../styles/variables.scss';
+
+.container {
+  background: $surface;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  padding: $space-lg;
+  border: 1px solid $border;
+}
+
+.summaryLines {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  margin-bottom: $space-lg;
+}
+
+.summaryLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $space-xs 0;
+}
+
+.label {
+  color: $text-secondary;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.value {
+  color: $text-secondary;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.discount {
+  color: $success;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.totalLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $space-md 0;
+  border-top: 2px solid $border;
+  margin-bottom: $space-lg;
+}
+
+.totalLabel {
+  color: $text-primary;
+  font-size: 1.375rem;
+  font-weight: bold;
+}
+
+.totalValue {
+  color: $primary;
+  font-size: 1.375rem;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.checkoutButton {
+  width: 100%;
+}
+
+.clearButton {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: $space-md;
+  }
+  
+  .totalLabel,
+  .totalValue {
+    font-size: 1.25rem;
+  }
+}

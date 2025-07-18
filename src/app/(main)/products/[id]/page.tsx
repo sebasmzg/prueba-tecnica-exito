@@ -1,11 +1,14 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useProductById } from '../../../infrastructure/hooks/UseProductById';
 import { useCart } from '../../../infrastructure/hooks';
 import { Pages } from '../../../core/application/models/pages.enum';
+import { LoadingState, ErrorState, Button } from '@/components/atoms';
+import styles from './page.module.scss';
+import { Breadcrumb } from '@/components/molecule';
+import { ProductDetail } from '@/components/organisms';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -16,24 +19,26 @@ export default function ProductDetailPage() {
 
   if (loading) {
     return (
-      <div>
-        <p>Cargando producto...</p>
+      <div className={styles.container}>
+        <LoadingState message="Cargando producto..." />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div>
-        <div>
-          <div>
-            <p>{error}</p>
-            <button
-              onClick={refetch}
-              >
-              Intentar de nuevo
-            </button>
-          </div>
+      <div className={styles.container}>
+        <div className={styles.errorContainer}>
+          <ErrorState 
+            message={error}
+            onRetry={refetch}
+            retryText="Intentar de nuevo"
+          />
+          <Link href={Pages.products} className={styles.backLink}>
+            <Button variant="secondary" size="small">
+              ← Volver a productos
+            </Button>
+          </Link>
         </div>
       </div>
     );
@@ -41,68 +46,52 @@ export default function ProductDetailPage() {
 
   if (!product) {
     return (
-      <div>
-        <div>
-          <p>Producto no encontrado</p>
-          <Link 
-            href="/products"
-          >
-            Volver a productos
-          </Link>
+      <div className={styles.container}>
+        <div className={styles.notFoundContainer}>
+          <div className={styles.notFoundContent}>
+            <div className={styles.notFoundIcon}>🔍</div>
+            <h2 className={styles.notFoundTitle}>Producto no encontrado</h2>
+            <p className={styles.notFoundDescription}>
+              El producto que buscas no existe o ha sido eliminado.
+            </p>
+            <Link href={Pages.products} className={styles.backLink}>
+              <Button variant="primary">
+                Volver a productos
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     );
   }
 
+  const breadcrumbItems = [
+    { label: 'Tienda', href: '/' },
+    { label: 'Productos', href: Pages.products },
+    { label: product.category, href: `${Pages.products}?category=${product.category}` },
+    { label: product.title }
+  ];
+
   const inCart = isInCart(product.id);
   const quantity = getItemQuantity(product.id);
 
   return (
-    <div>
-      <div>
-        <Link 
-          href={Pages.products}
-        >
-          ← Volver a productos
+    <div className={styles.container}>
+      <Link href={Pages.products} className={styles.backButton}>
+          <Button variant="secondary" size="small">
+            ← Volver a productos
+          </Button>
         </Link>
-      </div>
+      <Breadcrumb items={breadcrumbItems} />
       
-      <div>
-        <div>
-          <Image 
-            width={500} 
-            height={500} 
-            src={product.image} 
-            alt={product.title}
-          />
-        </div>
-        
-        <div>
-          <h1>{product.title}</h1>
-          <p>{product.description}</p>
-          <p>${product.price}</p>
-          
-          <div>
-            {
-              inCart ? (
-                <div>
-                  <button onClick={()=> decreaseQuantity(product.id)
-                  }>-</button>
-                  <span>Quatity: {quantity}</span>
-                  <button onClick={()=> increaseQuantity(product.id)}>+</button>
-                </div>
-              ) : (
-                <button onClick={()=> addToCart(product)}>Add to Cart</button>
-              )
-            }
-          </div>
-          <Link href={Pages.cart} >
-          <button>
-            Cart
-          </button>
-        </Link>
-        </div>
-      </div>
+      <ProductDetail
+        product={product}
+        isInCart={inCart}
+        quantity={quantity}
+        onAddToCart={() => addToCart(product)}
+        onIncreaseQuantity={() => increaseQuantity(product.id)}
+        onDecreaseQuantity={() => decreaseQuantity(product.id)}
+      />
     </div>
   );
 }

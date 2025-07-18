@@ -2,72 +2,80 @@
 
 import Link from "next/link";
 import { IProduct } from "../../core/application/dto";
-import Image from "next/image";
 import { useCart, useProductSearch, useProducts } from "../../infrastructure/hooks";
 import { Pages } from "../../core/application/models/pages.enum";
-import { ProductSearch } from "../../../components/searchProduct";
+
+import { Button, ErrorState, LoadingState } from "@/components/atoms";
+import styles from './page.module.scss';
+import { ProductGrid, ProductSearch } from "@/components/organisms";
 
 export default function ProductsPage() {
   const { products, loading, error, refetch } = useProducts();
-  const {addToCart, isInCart, getItemQuantity, increaseQuantity, decreaseQuantity} = useCart();
- const {searchTerm, setSearchTerm, debouncedSearchTerm, filteredProducts, clearSearch, resultsCount} = useProductSearch(products);
+  const { addToCart, isInCart, getItemQuantity, increaseQuantity, decreaseQuantity } = useCart();
+  const { 
+    searchTerm, 
+    setSearchTerm, 
+    debouncedSearchTerm, 
+    filteredProducts, 
+    clearSearch, 
+    resultsCount 
+  } = useProductSearch(products);
+
   const handleAddToCart = (product: IProduct) => {
     addToCart(product);
-  }
+  };
 
   if (loading) {
     return (
-      <div>
-        <h1>Productos</h1>
-        <div>
-          <div></div>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Productos</h1>
         </div>
+        <LoadingState message="Cargando productos..." />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div>
-        <h1>Productos</h1>
-        <div>
-          <div>
-            <p>{error}</p>
-            <button onClick={refetch}>
-              Intentar de nuevo
-            </button>
-          </div>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Productos</h1>
         </div>
+        <ErrorState 
+          message={error}
+          onRetry={refetch}
+          retryText="Intentar de nuevo"
+        />
       </div>
     );
   }
 
   if (products.length === 0) {
     return (
-      <div>
-        <h1>Productos</h1>
-        <div>
-          <p>No hay productos disponibles</p>
-          <button onClick={refetch}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Productos</h1>
+        </div>
+        <div className={styles.emptyProducts}>
+          <div className={styles.emptyIcon}>📦</div>
+          <h2 className={styles.emptyTitle}>No hay productos disponibles</h2>
+          <p className={styles.emptyDescription}>
+            Parece que no hay productos en este momento.
+          </p>
+          <Button onClick={refetch} variant="primary">
             Recargar
-          </button>
+          </Button>
         </div>
       </div>
     );
   }
   
   return (
-    <div>
-      <div>
-        <h1>Productos</h1>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Productos</h1>
       </div>
-      <nav style={{ marginTop: '20px' }}>
-        <Link href={Pages.cart} >
-          <button>
-            Cart
-          </button>
-        </Link>
-      </nav>
 
       <ProductSearch 
         searchTerm={searchTerm}
@@ -76,46 +84,29 @@ export default function ProductsPage() {
         resultsCount={resultsCount}
       />
 
-      <div>
-        {filteredProducts.length === 0 && debouncedSearchTerm ? (
-          <div style={{ textAlign: 'center', padding: '40px', color: '#666' }}>
-            <p>No se encontraron productos que coincidan con "{debouncedSearchTerm}"</p>
-          </div>
-        ) : (
-          filteredProducts.map((product: IProduct)=> {
-            const inCart = isInCart(product.id);
-            const quantity = getItemQuantity(product.id);
-            return (
-              <div key={product.id}>
-                <h2>{product.title}</h2>
-                <div>
-                  <Image width={200} height={200} src={product.image} alt={`${product.title} image`}/>
-                </div>
-                <p>{product.description}</p>
-                <p>{product.price}</p>
-                <div>
-                  {inCart ? (
-                    <div>
-                      <button onClick={()=>decreaseQuantity(product.id)}>-</button>
-                      <span>Quantity: {quantity}</span>
-                      <button onClick={()=> increaseQuantity(product.id)}>+</button>
-                    </div>
-                  ) : (
-                    <button onClick={()=> handleAddToCart(product)}>
-                      Add to cart
-                    </button>
-                  )}
-                </div>
-                <Link href={`/products/${product.id}`}>
-                  <button style={{ marginTop: '10px', padding: '8px 16px' }}>
-                    Ver detalles
-                  </button>
-                </Link>
-              </div>
-            )
-          })
-        )}
-      </div>
+      {filteredProducts.length === 0 && debouncedSearchTerm ? (
+        <div className={styles.noSearchResults}>
+          <div className={styles.noResultsIcon}>🔍</div>
+          <h3 className={styles.noResultsTitle}>
+            No se encontraron productos
+          </h3>
+          <p className={styles.noResultsDescription}>
+            No hay productos que coincidan con "<strong>{debouncedSearchTerm}</strong>"
+          </p>
+          <Button onClick={clearSearch} variant="secondary">
+            Limpiar búsqueda
+          </Button>
+        </div>
+      ) : (
+        <ProductGrid
+          products={filteredProducts}
+          isInCart={isInCart}
+          getItemQuantity={getItemQuantity}
+          onAddToCart={handleAddToCart}
+          onIncreaseQuantity={increaseQuantity}
+          onDecreaseQuantity={decreaseQuantity}
+        />
+      )}
     </div>
   );
 }

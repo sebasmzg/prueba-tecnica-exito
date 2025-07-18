@@ -1,0 +1,141 @@
+@import '../../../styles/variables.scss';
+
+.row {
+  border-top: 1px solid $border;
+  transition: $transition;
+
+  &:hover {
+    background: rgba($accent, 0.05);
+  }
+}
+
+.imageCell,
+.productCell,
+.priceCell,
+.quantityCell,
+.subtotalCell,
+.actionCell {
+  height: 72px;
+  padding: $space-sm $space-md;
+  vertical-align: middle;
+}
+
+.imageContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: $surface;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productCell {
+  min-width: 200px;
+}
+
+.productTitle {
+  color: $text-primary;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.priceCell {
+  min-width: 150px;
+}
+
+.unitPrice {
+  color: $text-secondary;
+  font-size: 0.875rem;
+}
+
+.quantityCell {
+  width: 150px;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  background: rgba($accent, 0.1);
+  border-radius: $radius;
+  padding: $space-xs;
+  width: fit-content;
+}
+
+.quantityButton {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.quantityValue {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $text-primary;
+  min-width: 20px;
+  text-align: center;
+}
+
+.subtotalCell {
+  min-width: 100px;
+}
+
+.subtotal {
+  color: $text-primary;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.actionCell {
+  width: 100px;
+}
+
+.removeButton {
+  font-size: 0.8rem;
+  padding: $space-xs $space-sm;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .imageCell {
+    display: none;
+  }
+  
+  .priceCell,
+  .subtotalCell {
+    display: none;
+  }
+  
+  .productCell {
+    min-width: 150px;
+  }
+  
+  .quantityControls {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .actionCell {
+    display: none;
+  }
+  
+  .quantityControls {
+    flex-direction: column;
+    gap: $space-xs;
+  }
+}

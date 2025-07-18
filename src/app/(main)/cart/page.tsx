@@ -2,10 +2,17 @@
 
 import Link from "next/link";
 import { useCart } from "../../infrastructure/hooks";
-import Image from "next/image";
 import { Pages } from "../../core/application/models/pages.enum";
+import { LoadingState, Button } from "@/components/atoms";
+
+import { useRouter } from 'next/navigation';
+import styles from './page.module.scss';
+import { EmptyCart } from "@/components/molecule/emptyCart/EmptyCart";
+import { CartTable } from "@/components/organisms";
+import { CartSummary } from "@/components/molecule";
 
 export default function CartPage() {
+  const router = useRouter();
   const {
     items,
     total,
@@ -15,62 +22,74 @@ export default function CartPage() {
     decreaseQuantity,
     removeFromCart,
     clearCart,
+    loading
   } = useCart();
+
+  const handleCheckout = () => {
+    // Aquí iría la lógica de checkout
+    router.push(Pages.checkout || '/checkout');
+  };
+
+  const handleClearCart = () => {
+    if (window.confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+      clearCart();
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className={styles.container}>
+        <LoadingState message="Cargando carrito..." />
+      </div>
+    );
+  }
 
   if (isEmpty) {
     return (
-      <div>
-        <h1>Shopping Cart</h1>
-        <p>Your cart is empty. 😞</p>
-        <Link href={Pages.products}>
-          <button>Continue shopping.</button>
-        </Link>
+      <div className={styles.container}>
+        <EmptyCart />
       </div>
     );
   }
 
   return (
-    <div>
-      <h1>Shopping cart</h1>
-      <p>Total products: {totalQuantity}</p>
-      <div>
-        {items.map((item) => (
-          <div key={item.id}>
-            <Image
-              src={item.product.image}
-              width={80}
-              height={80}
-              alt={`${item.product.title} image`}
-            />
-            <div>
-              <h3>{item.product.title}</h3>
-              <p>${item.product.price}</p>
-            </div>
-            <div>
-              <button onClick={() => decreaseQuantity(item.product.id)}>
-                -
-              </button>
-              <span>Quantity: {item.quantity}</span>
-              <button onClick={() => increaseQuantity(item.product.id)}>
-                +
-              </button>
-            </div>
-            <div>
-              <p>Subtotal: ${item.subtotal.toFixed(2)}</p>
-              <button onClick={() => removeFromCart(item.product.id)}>
-                Remove
-              </button>
-            </div>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        {/* Header */}
+        <div className={styles.header}>
+          <h1 className={styles.title}>Carrito de Compras</h1>
+          <div className={styles.headerActions}>
+            <span className={styles.itemCount}>
+              {totalQuantity} producto{totalQuantity !== 1 ? 's' : ''}
+            </span>
+            <Link href={Pages.products} className={styles.continueShoppingLink}>
+              <Button variant="secondary" size="small">
+                Continuar Comprando
+              </Button>
+            </Link>
           </div>
-        ))}
-      </div>
-      <div>
-        <h2>Total: ${total.toFixed(2)}</h2>
-        <Link href={Pages.checkout}>
-          <button>Checkout</button>
-        </Link>
-        <button onClick={clearCart}>Clear cart</button>
-        <Link href={Pages.products}>Continue shopping</Link>
+        </div>
+
+        {/* Cart Content */}
+        <div className={styles.cartContent}>
+          <div className={styles.cartItems}>
+            <CartTable
+              items={items}
+              onIncreaseQuantity={increaseQuantity}
+              onDecreaseQuantity={decreaseQuantity}
+              onRemoveItem={removeFromCart}
+            />
+          </div>
+
+          <div className={styles.cartSidebar}>
+            <CartSummary
+              subtotal={total}
+              total={total}
+              onCheckout={handleCheckout}
+              onClearCart={handleClearCart}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

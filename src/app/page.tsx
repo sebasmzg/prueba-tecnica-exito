@@ -1,13 +1,11 @@
-'use client'
-import Link from "next/link";
+import { FeaturedProducts } from "@/components/organisms/FeaturedProducts/FeaturedProducts";
+import { HeroSection } from "@/components/organisms/Hero/HeroSection";
 
 export default function Home() {
   return (
-    <div>Holaa
-      <Link href={'/products'}>
-        Productos
-      </Link>
-      </div>
-    );
-      
+    <>
+      <HeroSection />
+      <FeaturedProducts />
+    </>
+  );
 }

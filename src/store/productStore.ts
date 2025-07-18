@@ -71,7 +71,7 @@ export const useCartStore = create<CartStore>()(
           error:
             error instanceof Error
               ? error.message
-              : "Error al agregar producto",
+              : "Error adding product",
         });
       }
     },
@@ -91,7 +91,7 @@ export const useCartStore = create<CartStore>()(
         } catch (error) {
           set({
             loading: false,
-            error: error instanceof Error ? error.message : 'Error al eliminar producto'
+            error: error instanceof Error ? error.message : 'Error removing product'
           });
         }
       },
@@ -127,7 +127,7 @@ export const useCartStore = create<CartStore>()(
         } catch (error) {
           set({
             loading: false,
-            error: error instanceof Error ? error.message : 'Error al actualizar cantidad'
+            error: error instanceof Error ? error.message : 'Error updating quantity'
           });
         }
       },
@@ -146,7 +146,7 @@ export const useCartStore = create<CartStore>()(
         } catch (error) {
           set({
             loading: false,
-            error: error instanceof Error ? error.message : 'Error al limpiar carrito'
+            error: error instanceof Error ? error.message : 'Error cleaning cart'
           });
         }
       },

@@ -1,163 +1,185 @@
 @import '../../../styles/variables.scss';
 
-.fieldWrapper {
-  margin-bottom: $space-lg;
-  position: relative;
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  margin-bottom: $space-md;
 }
 
-// Password field wrapper
-.passwordWrapper {
-  position: relative;
-  
-  .passwordInput {
-    padding-right: 4rem; // Espacio para el botón
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $text-primary;
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+}
+
+.required {
+  color: $error;
+  font-weight: bold;
+}
+
+.input,
+.textarea,
+.select {
+  padding: $space-md;
+  border: 2px solid $border;
+  border-radius: $radius;
+  font-size: 1rem;
+  transition: $transition;
+  background: $surface;
+  color: $text-primary;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
   }
-  
-  .passwordToggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    padding: 0 $space-md;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all $transition;
-    border-radius: 0 $radius $radius 0;
-    
-    &:hover {
-      background-color: rgba(70, 130, 169, 0.1); // Primary con opacidad
-      
-      .toggleText {
-        color: $primary;
-      }
-    }
-    
-    &:focus {
-      outline: none;
-      background-color: rgba(70, 130, 169, 0.1);
-      box-shadow: inset 0 0 0 2px $primary;
-      
-      .toggleText {
-        color: $primary;
-      }
-    }
-    
-    &:active {
-      background-color: rgba(70, 130, 169, 0.2);
-    }
+
+  &::placeholder {
+    color: $text-secondary;
   }
+
+  &:disabled {
+    background: rgba($border, 0.5);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.select {
+  cursor: pointer;
   
-  .toggleText {
+  option {
+    padding: $space-sm;
+  }
+}
+
+.inputError {
+  border-color: $error;
+  
+  &:focus {
+    border-color: $error;
+    box-shadow: 0 0 0 3px rgba($error, 0.1);
+  }
+}
+
+.errorMessage {
+  font-size: 0.75rem;
+  color: $error;
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+
+  &::before {
+    content: '⚠️';
     font-size: 0.875rem;
-    font-weight: 500;
-    color: $text-muted;
-    transition: color $transition;
-    user-select: none;
   }
 }
 
-// Estilos específicos para diferentes tipos de campo
-.fieldWrapper {
-  // Input con ícono
-  &.hasIcon {
-    .input {
-      padding-left: 2.5rem;
-    }
-    
-    .icon {
-      position: absolute;
-      left: $space-sm;
-      top: 50%;
-      transform: translateY(-50%);
-      color: $text-muted;
-      pointer-events: none;
-    }
-  }
+// Checkbox styles
+.checkboxContainer {
+  margin-bottom: $space-md;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: $primary;
+  cursor: pointer;
   
-  // Estados de validación
-  &.success {
-    .input {
-      border-color: $success;
-      
-      &:focus {
-        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
-      }
-    }
-  }
-  
-  &.warning {
-    .input {
-      border-color: $warning;
-      
-      &:focus {
-        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
-      }
-    }
+  &:focus {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
   }
 }
 
-// Animaciones para campos
-.fieldWrapper {
-  .input,
-  .select {
-    &:focus {
-      transform: translateY(-1px);
-    }
-  }
+.checkboxLabel {
+  font-size: 0.875rem;
+  color: $text-primary;
+  cursor: pointer;
+  user-select: none;
 }
 
 // Responsive adjustments
 @media (max-width: 768px) {
-  .fieldWrapper {
-    margin-bottom: $space-md;
+  .input,
+  .textarea,
+  .select {
+    padding: $space-sm;
+    font-size: 0.875rem;
   }
   
-  .passwordWrapper {
-    .passwordToggle {
-      padding: 0 $space-sm;
-      
-      .toggleText {
-        font-size: 0.75rem;
-      }
-    }
-  }
-}
-
-// Estilos para grupos de campos relacionados
-.fieldGroup {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $space-md;
-  
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
-    
-    &.threeColumns {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
+  .label {
+    font-size: 0.8rem;
   }
   
-  .fieldWrapper {
-    margin-bottom: 0;
+  .checkboxLabel {
+    font-size: 0.8rem;
   }
 }
 
-// Estilo para campos en línea
-.inlineFields {
-  display: flex;
-  gap: $space-sm;
-  align-items: flex-end;
-  
-  .fieldWrapper {
-    flex: 1;
-    margin-bottom: 0;
+@media (max-width: 480px) {
+  .fieldContainer {
+    margin-bottom: $space-sm;
   }
   
-  .submitButton {
-    flex-shrink: 0;
+  .input,
+  .textarea,
+  .select {
+    padding: $space-xs $space-sm;
+  }
+}
+
+// Estados de validación
+.input:valid,
+.textarea:valid,
+.select:valid {
+  &:not(:placeholder-shown) {
+    border-color: $success;
+  }
+}
+
+// Animaciones
+.fieldContainer {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Estados hover
+.input:hover,
+.textarea:hover,
+.select:hover {
+  border-color: rgba($primary, 0.5);
+}
+
+.checkboxWrapper:hover {
+  .checkboxLabel {
+    color: $primary;
   }
 }

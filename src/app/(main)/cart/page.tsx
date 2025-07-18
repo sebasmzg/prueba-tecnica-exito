@@ -2,14 +2,13 @@
 
 import Link from "next/link";
 import { useCart } from "../../infrastructure/hooks";
-import { Pages } from "../../core/application/models/pages.enum";
 import { LoadingState, Button } from "@/components/atoms";
-
 import { useRouter } from 'next/navigation';
 import styles from './page.module.scss';
 import { EmptyCart } from "@/components/molecule/emptyCart/EmptyCart";
 import { CartTable } from "@/components/organisms";
 import { CartSummary } from "@/components/molecule";
+import { Pages } from "@/app/core/application/models/pages.enum";
 
 export default function CartPage() {
   const router = useRouter();
@@ -26,8 +25,7 @@ export default function CartPage() {
   } = useCart();
 
   const handleCheckout = () => {
-    // Aquí iría la lógica de checkout
-    router.push(Pages.checkout || '/checkout');
+    router.push(Pages.checkout);
   };
 
   const handleClearCart = () => {
@@ -55,7 +53,6 @@ export default function CartPage() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {/* Header */}
         <div className={styles.header}>
           <h1 className={styles.title}>Carrito de Compras</h1>
           <div className={styles.headerActions}>

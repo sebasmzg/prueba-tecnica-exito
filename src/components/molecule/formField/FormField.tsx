@@ -1,111 +1,113 @@
-"use client"
+'use client'
+import React from 'react';
+import { useFormContext } from 'react-hook-form';
+import styles from './FormField.module.scss';
 
-import { useFormContext } from "react-hook-form";
-import { FieldType, FormFieldProps } from "@/app/core/application/models/form.type";
-import { useState } from "react";
-import styles from './formField.module.scss';
-import { Checkbox, ErrorMessage, Input, Label, Select } from "@/components/atoms";
+interface FormFieldProps {
+  name: string;
+  label: string;
+  type: 'text' | 'email' | 'tel' | 'textarea' | 'select' | 'checkbox';
+  placeholder?: string;
+  options?: { value: string; label: string }[];
+  required?: boolean;
+  error?: string;
+  className?: string;
+}
 
-export const FormField = ({
+export const FormField: React.FC<FormFieldProps> = ({
   name,
   label,
   type,
   placeholder,
   options,
-}: FormFieldProps) => {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext();
-  const error = errors[name]?.message as string | undefined;
+  required = false,
+  error,
+  className = ''
+}) => {
+  const { register, formState: { errors } } = useFormContext();
+  const fieldError = error || errors[name]?.message;
 
-  const [showPassword, setShowPassword] = useState(false);
+  const renderInput = () => {
+    const commonProps = {
+      ...register(name),
+      className: `${styles.input} ${fieldError ? styles.inputError : ''}`,
+      placeholder,
+      'aria-invalid': !!fieldError,
+      'aria-describedby': fieldError ? `${name}-error` : undefined
+    };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    switch (type) {
+      case 'textarea':
+        return (
+          <textarea
+            {...commonProps}
+            rows={4}
+            className={`${styles.textarea} ${fieldError ? styles.inputError : ''}`}
+          />
+        );
+
+      case 'select':
+        return (
+          <select {...commonProps} className={`${styles.select} ${fieldError ? styles.inputError : ''}`}>
+            <option value="">{placeholder || 'Seleccionar...'}</option>
+            {options?.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        );
+
+      case 'checkbox':
+        return (
+          <div className={styles.checkboxWrapper}>
+            <input
+              {...register(name)}
+              type="checkbox"
+              className={styles.checkbox}
+              id={name}
+            />
+            <label htmlFor={name} className={styles.checkboxLabel}>
+              {label}
+            </label>
+          </div>
+        );
+
+      default:
+        return (
+          <input
+            {...commonProps}
+            type={type}
+          />
+        );
+    }
   };
 
-  let autoCompleteProps = {};
-  if (type === FieldType.Email) {
-    autoCompleteProps = { autoComplete: "email" };
-  } else if (type === FieldType.Password) {
-    autoCompleteProps = { autoComplete: "current-password" };
-  } else if (type === FieldType.Text && name.toLowerCase().includes("name")) {
-    autoCompleteProps = { autoComplete: "name" };
-  } else if (type === FieldType.Tel) {
-    autoCompleteProps = { autoComplete: "tel" };
+  if (type === 'checkbox') {
+    return (
+      <div className={`${styles.fieldContainer} ${styles.checkboxContainer} ${className}`}>
+        {renderInput()}
+        {fieldError && (
+          <span id={`${name}-error`} className={styles.errorMessage}>
+            {fieldError as string}
+          </span>
+        )}
+      </div>
+    );
   }
 
   return (
-    <div className={styles.fieldWrapper}>
-      {type !== FieldType.Checkbox && (
-        <Label 
-          htmlFor={name} 
-        >
-          {label}
-        </Label>
+    <div className={`${styles.fieldContainer} ${className}`}>
+      <label htmlFor={name} className={styles.label}>
+        {label}
+        {required && <span className={styles.required}>*</span>}
+      </label>
+      {renderInput()}
+      {fieldError && (
+        <span id={`${name}-error`} className={styles.errorMessage}>
+          {fieldError as string}
+        </span>
       )}
-      
-      {type === FieldType.Text ||
-      type === FieldType.Email ||
-      type === FieldType.Number ||
-      type === FieldType.Tel ? (
-        <>
-          <Input
-            id={name}
-            type={type}
-            placeholder={placeholder}
-            hasError={!!error}
-            {...register(name)}
-            {...autoCompleteProps}
-          />
-          <ErrorMessage message={error} />
-        </>
-      ) : type === FieldType.Password ? (
-        <div className={styles.passwordWrapper}>
-          <Input 
-            id={name}
-            type={showPassword ? "text" : "password"}
-            placeholder={placeholder}
-            hasError={!!error}
-            {...register(name)}
-            {...autoCompleteProps}
-            className={styles.passwordInput}
-          />
-          <button
-            type="button"
-            onClick={togglePasswordVisibility}
-            className={styles.passwordToggle}
-            aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
-          >
-            {showPassword ? (
-              <span className={styles.toggleText}>Ocultar</span>
-            ) : (
-              <span className={styles.toggleText}>Mostrar</span>
-            )}
-          </button>
-          <ErrorMessage message={error} />
-        </div>
-      ) : type === FieldType.Select && options ? (
-        <>
-          <Select
-            id={name}
-            options={options}
-            hasError={!!error}
-            {...register(name)}
-          />
-          <ErrorMessage message={error} />
-        </>
-      ) : type === FieldType.Checkbox ? (
-        <>
-          <Checkbox 
-            label={label} 
-            {...register(name)} 
-            hasError={!!error} 
-          />
-          <ErrorMessage message={error} />
-        </>
-      ) : null}
     </div>
   );
 };

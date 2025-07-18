@@ -38,7 +38,11 @@ export const DynamicForm = ({
 
           <div className={styles.fieldsContainer}>
             {config.map((field) => (
-              <FormField key={field.name} {...field} />
+              <FormField
+                key={field.name}
+                {...field}
+                type={field.type as "email" | "text" | "select" | "textarea" | "tel" | "checkbox"}
+              />
             ))}
           </div>
 

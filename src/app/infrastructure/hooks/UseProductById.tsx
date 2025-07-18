@@ -1,7 +1,7 @@
 'use client'
 
 import { ProductsServices } from '@/app/infrastructure/services/products.service';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { IProduct } from '../../core/application/dto';
 
 interface UseProductByIdState {
@@ -17,7 +17,7 @@ export const useProductById = (id: string | number) => {
     error: null
   });
 
-  const fetchProduct = async () => {
+  const fetchProduct = useCallback(async () => {
     if (!id) {
       setState({ product: null, loading: false, error: 'ID requerido' });
       return;
@@ -36,15 +36,15 @@ export const useProductById = (id: string | number) => {
         error: error instanceof Error ? error.message : 'Error al cargar el producto'
       }));
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     fetchProduct();
-  }, [id]);
+  }, [fetchProduct]);
 
-  const refetch = () => {
+  const refetch = useCallback(() => {
     fetchProduct();
-  };
+  }, [fetchProduct]);
 
   return {
     ...state,

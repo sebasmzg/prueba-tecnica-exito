@@ -15,7 +15,7 @@ export const HeroSection: React.FC = () => {
               Descubre los
               <span className={styles.highlight}> Mejores Productos</span>
               <br />
-              para tu Hogar
+              para ti
             </h1>
             
             <p className={styles.subtitle}>

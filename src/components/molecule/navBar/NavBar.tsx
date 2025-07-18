@@ -18,8 +18,7 @@ export const Header = () => {
     searchTerm, 
     setSearchTerm, 
     filteredProducts, 
-    clearSearch,
-    resultsCount 
+    clearSearch, 
   } = useProductSearch(products || []);
   
   const [showSearchResults, setShowSearchResults] = useState(false);

@@ -92,7 +92,6 @@
     padding: $space-lg $space-md;
   }
   
-  // Espaciado progresivo entre campos
   > * {
     margin-bottom: $space-lg;
     
@@ -101,7 +100,6 @@
     }
   }
   
-  // Efecto de aparición progresiva de campos
   > * {
     animation: fadeInUp 0.6s ease-out both;
     
@@ -142,7 +140,6 @@
     font-size: 1.1rem;
     padding: $space-md $space-xl;
     
-    // Efecto de ondas al hacer click
     &::before {
       content: '';
       position: absolute;
@@ -161,7 +158,6 @@
       height: 300px;
     }
     
-    // Estados especiales para checkout
     &:not(:disabled) {
       background: linear-gradient(135deg, $primary, $secondary);
       
@@ -189,7 +185,6 @@
   }
 }
 
-// Variantes específicas del formulario
 .form {
   &.checkout {
     max-width: 800px;
@@ -202,7 +197,6 @@
       @media (min-width: 768px) {
         grid-template-columns: 1fr 1fr;
         
-        // Campos que ocupan toda la fila
         .fullWidth {
           grid-column: 1 / -1;
         }
@@ -245,7 +239,6 @@
   }
 }
 
-// Estados de carga
 .form.loading {
   .fieldsContainer {
     opacity: 0.7;
@@ -271,9 +264,7 @@
   }
 }
 
-// Mejoras visuales para campos específicos de checkout
 .fieldsContainer {
-  // Grupos de campos relacionados
   .fieldGroup {
     display: contents;
     
@@ -303,7 +294,6 @@
   }
 }
 
-// Animaciones de validación
 .fieldsContainer {
   .field-error {
     animation: shake 0.5s ease-in-out;
@@ -316,7 +306,6 @@
   75% { transform: translateX(5px); }
 }
 
-// Responsive improvements
 @media (max-width: 480px) {
   .formContainer {
     padding: $space-sm;

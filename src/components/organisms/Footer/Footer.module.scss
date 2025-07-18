@@ -10,7 +10,6 @@
   position: relative;
   overflow: hidden;
 
-  // Patrón de fondo sutil
   &::before {
     content: '';
     position: absolute;
@@ -47,7 +46,6 @@
   }
 }
 
-// Brand Section
 .brandSection {
   display: flex;
   flex-direction: column;
@@ -88,7 +86,6 @@
   margin: 0;
 }
 
-// Social Media
 .socialMedia {
   display: flex;
   flex-direction: column;
@@ -108,7 +105,6 @@
   flex-wrap: wrap;
 }
 
-// Links Grid
 .linksGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -125,14 +121,12 @@
   }
 }
 
-// Newsletter Section
 .newsletterSection {
   display: flex;
   flex-direction: column;
   gap: $space-xl;
 }
 
-// Contact Info
 .contactInfo {
   background: rgba(255, 255, 255, 0.1);
   border-radius: $radius;
@@ -187,7 +181,6 @@
   text-align: center;
 }
 
-// Footer Bottom
 .footerBottom {
   padding: $space-lg;
   background: rgba(0, 0, 0, 0.3);
@@ -213,7 +206,6 @@
   margin: 0;
 }
 
-// Payment Methods
 .paymentMethods {
   display: flex;
   align-items: center;
@@ -250,7 +242,6 @@
   }
 }
 
-// Responsive adjustments
 @media (max-width: 768px) {
   .mainContent {
     padding: $space-md;
@@ -289,7 +280,6 @@
   }
 }
 
-// Animaciones
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -305,7 +295,6 @@
   animation: fadeInUp 0.8s ease-out;
 }
 
-// Hover effects para toda la sección
 .mainContent > * {
   transition: $transition;
   

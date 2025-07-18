@@ -25,7 +25,6 @@ export const Header = () => {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
 
-  // Cerrar dropdown cuando se hace click fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -110,13 +109,13 @@ export const Header = () => {
                     ))}
                     {filteredProducts.length > 5 && (
                       <div className={styles.searchResultsMore}>
-                        Ver {filteredProducts.length - 5} resultados más...
+                        Ver {filteredProducts.length - 5} rmore results...
                       </div>
                     )}
                   </>
                 ) : (
                   <div className={styles.noResults}>
-                    No se encontraron productos para "{searchTerm}"
+                    No products finded for &quot;{searchTerm}&qupt;
                   </div>
                 )}
               </div>
@@ -127,7 +126,7 @@ export const Header = () => {
         <nav className={styles.navigation}>
           <div className={styles.navItems}>
             <Link href="/products" className={styles.navLink}>
-              Productos
+              Products
             </Link>
           </div>
 
@@ -138,7 +137,6 @@ export const Header = () => {
             )}
           </Link>
 
-          {/* Mobile Menu Button */}
           <button
             className={styles.mobileMenuButton}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -148,7 +146,6 @@ export const Header = () => {
           </button>
         </nav>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className={styles.mobileMenu}>
             <Link 

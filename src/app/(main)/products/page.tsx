@@ -1,24 +1,32 @@
-'use client';
+"use client";
 
-import Link from "next/link";
 import { IProduct } from "../../core/application/dto";
-import { useCart, useProductSearch, useProducts } from "../../infrastructure/hooks";
-import { Pages } from "../../core/application/models/pages.enum";
+import {
+  useCart,
+  useProductSearch,
+  useProducts,
+} from "../../infrastructure/hooks";
 
 import { Button, ErrorState, LoadingState } from "@/components/atoms";
-import styles from './page.module.scss';
+import styles from "./page.module.scss";
 import { ProductGrid, ProductSearch } from "@/components/organisms";
 
 export default function ProductsPage() {
   const { products, loading, error, refetch } = useProducts();
-  const { addToCart, isInCart, getItemQuantity, increaseQuantity, decreaseQuantity } = useCart();
-  const { 
-    searchTerm, 
-    setSearchTerm, 
-    debouncedSearchTerm, 
-    filteredProducts, 
-    clearSearch, 
-    resultsCount 
+  const {
+    addToCart,
+    isInCart,
+    getItemQuantity,
+    increaseQuantity,
+    decreaseQuantity,
+  } = useCart();
+  const {
+    searchTerm,
+    setSearchTerm,
+    debouncedSearchTerm,
+    filteredProducts,
+    clearSearch,
+    resultsCount,
   } = useProductSearch(products);
 
   const handleAddToCart = (product: IProduct) => {
@@ -29,9 +37,9 @@ export default function ProductsPage() {
     return (
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Productos</h1>
+          <h1 className={styles.title}>Products</h1>
         </div>
-        <LoadingState message="Cargando productos..." />
+        <LoadingState message="Loading products..." />
       </div>
     );
   }
@@ -40,12 +48,12 @@ export default function ProductsPage() {
     return (
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Productos</h1>
+          <h1 className={styles.title}>Products</h1>
         </div>
-        <ErrorState 
+        <ErrorState
           message={error}
           onRetry={refetch}
-          retryText="Intentar de nuevo"
+          retryText="Try again"
         />
       </div>
     );
@@ -55,29 +63,29 @@ export default function ProductsPage() {
     return (
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Productos</h1>
+          <h1 className={styles.title}>Products</h1>
         </div>
         <div className={styles.emptyProducts}>
           <div className={styles.emptyIcon}>📦</div>
-          <h2 className={styles.emptyTitle}>No hay productos disponibles</h2>
+          <h2 className={styles.emptyTitle}>No products available</h2>
           <p className={styles.emptyDescription}>
-            Parece que no hay productos en este momento.
+            Seems there its not products.
           </p>
           <Button onClick={refetch} variant="primary">
-            Recargar
+            Reload
           </Button>
         </div>
       </div>
     );
   }
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Productos</h1>
+        <h1 className={styles.title}>Products</h1>
       </div>
 
-      <ProductSearch 
+      <ProductSearch
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
         onClearSearch={clearSearch}
@@ -87,12 +95,12 @@ export default function ProductsPage() {
       {filteredProducts.length === 0 && debouncedSearchTerm ? (
         <div className={styles.noSearchResults}>
           <div className={styles.noResultsIcon}>🔍</div>
-          <h3 className={styles.noResultsTitle}>
-            No se encontraron productos
-          </h3>
+          <h3 className={styles.noResultsTitle}>No se encontraron productos</h3>
           <p className={styles.noResultsDescription}>
-            No hay productos que coincidan con "<strong>{debouncedSearchTerm}</strong>"
+            No hay productos que coincidan con &quot;
+            <strong>{debouncedSearchTerm}</strong>&quot;
           </p>
+
           <Button onClick={clearSearch} variant="secondary">
             Limpiar búsqueda
           </Button>

@@ -54,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               >
                 −
               </Button>
-              <span className={styles.quantity}>Cantidad: {quantity}</span>
+              <span className={styles.quantity}>Quantity: {quantity}</span>
               <Button
                 onClick={onIncreaseQuantity}
                 variant="secondary"
@@ -70,7 +70,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               variant="primary"
               className={styles.addToCartButton}
             >
-              Agregar al carrito
+              Add to cart
             </Button>
           )}
           
@@ -80,7 +80,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               size="small"
               className={styles.detailsButton}
             >
-              Ver detalles
+              Details
             </Button>
           </Link>
         </div>

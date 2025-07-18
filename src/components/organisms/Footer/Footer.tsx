@@ -97,15 +97,15 @@ export const Footer: React.FC = () => {
               <div className={styles.contactDetails}>
                 <div className={styles.contactItem}>
                   <span className={styles.contactIcon}>📞</span>
-                  <span>+1 (555) 123-4567</span>
+                  <span>+57 (604) 123-4567</span>
                 </div>
                 <div className={styles.contactItem}>
                   <span className={styles.contactIcon}>📧</span>
-                  <span>support@ptexito.com</span>
+                  <span>support@sebastian.com</span>
                 </div>
                 <div className={styles.contactItem}>
                   <span className={styles.contactIcon}>📍</span>
-                  <span>123 Commerce St, City, State 12345</span>
+                  <span>123 centro St, Medellin, Antioquia</span>
                 </div>
                 <div className={styles.contactItem}>
                   <span className={styles.contactIcon}>🕒</span>
@@ -120,7 +120,7 @@ export const Footer: React.FC = () => {
         <div className={styles.footerBottom}>
           <div className={styles.bottomContent}>
             <p className={styles.copyright}>
-              © {currentYear} PT Éxito. Todos los derechos reservados.
+              © {currentYear} Jorge Sebastian Muñoz. Todos los derechos reservados.
             </p>
             
             <div className={styles.paymentMethods}>

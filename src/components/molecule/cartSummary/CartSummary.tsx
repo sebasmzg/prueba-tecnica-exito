@@ -8,7 +8,7 @@ interface CartSummaryProps {
   shipping?: number;
   tax?: number;
   discount?: number;
-  total: number;
+  total?: number;
   onCheckout: () => void;
   onClearCart: () => void;
 }
@@ -16,9 +16,7 @@ interface CartSummaryProps {
 export const CartSummary: React.FC<CartSummaryProps> = ({
   subtotal,
   shipping = 5.00,
-  tax = 0,
   discount = 0,
-  total,
   onCheckout,
   onClearCart
 }) => {

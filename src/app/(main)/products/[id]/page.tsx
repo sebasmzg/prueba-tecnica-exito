@@ -32,11 +32,11 @@ export default function ProductDetailPage() {
           <ErrorState 
             message={error}
             onRetry={refetch}
-            retryText="Intentar de nuevo"
+            retryText="Try again"
           />
           <Link href={Pages.products} className={styles.backLink}>
             <Button variant="secondary" size="small">
-              ← Volver a productos
+              ← back to products
             </Button>
           </Link>
         </div>
@@ -79,7 +79,7 @@ export default function ProductDetailPage() {
     <div className={styles.container}>
       <Link href={Pages.products} className={styles.backButton}>
           <Button variant="secondary" size="small">
-            ← Volver a productos
+            ← Back to products
           </Button>
         </Link>
       <Breadcrumb items={breadcrumbItems} />

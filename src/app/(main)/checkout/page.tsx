@@ -11,7 +11,7 @@ import { DynamicForm } from "@/components/organisms";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import styles from './page.module.scss';
+import styles from "./page.module.scss";
 import { Pages } from "@/app/core/application/models/pages.enum";
 
 export default function CheckoutPage() {
@@ -51,6 +51,40 @@ export default function CheckoutPage() {
   ];
 
   const handleCheckout = async (data: CheckoutFormData) => {
+    const orderSummary = `
+        🛒 CONFIRM YOUR ORDER
+
+👤 Customer: ${data.firstName} ${data.lastName}
+📧 Email: ${data.email}
+📱 Phone: ${data.phone}
+
+📍 Delivery Address:
+${data.address}
+${data.city}, ${data.department}
+Postal Code: ${data.postalCode}
+
+🛍️ Items (${items.length}):
+${items
+  .map(
+    (item) =>
+      `• ${item.product.title} x${item.quantity} - $${(
+        item.product.price * item.quantity
+      ).toFixed(2)}`
+  )
+  .join("\n")}
+
+💰 TOTAL: $${total}
+💳 Payment: ****${data.cardNumber.slice(-4)}
+
+⚠️ Are you sure you want to complete this purchase?`;
+
+    const confirmed = confirm(orderSummary);
+
+    if (!confirmed) {
+      console.log("❌ Purchase cancelled by user");
+      return; 
+    }
+
     setLoading(true);
     setError(null);
 
@@ -87,12 +121,8 @@ export default function CheckoutPage() {
     );
   }
 
-  if(error){
-    return (
-      <div>
-        Ooops I did it again :()
-      </div>
-    )
+  if (error) {
+    return <div>Ooops I did it again :()</div>;
   }
 
   if (isEmpty) {
@@ -112,7 +142,6 @@ export default function CheckoutPage() {
       </div>
     );
   }
-
 
   return (
     <div className={styles.container}>
@@ -155,9 +184,7 @@ export default function CheckoutPage() {
               <div className={styles.securityIcon}>🔒</div>
               <div className={styles.securityText}>
                 <h4>Compra Segura</h4>
-                <p>
-                  Tus datos están protegidos con encriptación
-                </p>
+                <p>Tus datos están protegidos con encriptación</p>
               </div>
             </div>
 

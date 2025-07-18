@@ -27,7 +27,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
 }) => {
   const router = useRouter();
 
-  // Datos simulados para el rating (en una app real vendrían de la API)
   const ratingData = {
     averageRating: 4.5,
     totalReviews: 120,
@@ -41,11 +40,9 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   };
 
   const handleGoToCheckout = () => {
-    // Si no está en el carrito, agregarlo primero
     if (!isInCart) {
       onAddToCart();
     }
-    // Redirigir al checkout
     router.push(Pages.checkout);
   };
 
@@ -56,7 +53,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {/* Imagen del producto */}
         <div className={styles.imageSection}>
           <div className={styles.imageContainer}>
             <Image
@@ -70,18 +66,14 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <p className={styles.imageDescription}>
             {product.description}
           </p>
-          
-          
         </div>
 
-        {/* Información del producto */}
         <div className={styles.infoSection}>
           <div className={styles.productInfo}>
             <h1 className={styles.title}>{product.title}</h1>
             <p className={styles.category}>{product.category}</p>
             <h2 className={styles.price}>${product.price}</h2>
             
-            {/* Información adicional de compra */}
             <div className={styles.purchaseInfo}>
               <div className={styles.infoItem}>
                 <span className={styles.infoIcon}>🚚</span>
@@ -123,7 +115,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   >
                     −
                   </Button>
-                  <span className={styles.quantity}>Cantidad: {quantity}</span>
+                  <span className={styles.quantity}>Quantity: {quantity}</span>
                   <Button
                     onClick={onIncreaseQuantity}
                     variant="secondary"
@@ -134,7 +126,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   </Button>
                 </div>
                 
-                {/* Botones de acción cuando está en carrito */}
                 <div className={styles.actionButtons}>
                   <Button
                     onClick={handleGoToCheckout}
@@ -142,7 +133,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                     size="large"
                     className={styles.checkoutButton}
                   >
-                    💳 Ir a Pagar
+                    💳 Checkout
                   </Button>
                   
                   <Button
@@ -151,7 +142,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                     size="large"
                     className={styles.cartButton}
                   >
-                    🛒 Ver Carrito
+                    🛒 Cart
                   </Button>
                 </div>
               </div>
@@ -163,7 +154,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   size="large"
                   className={styles.addToCartButton}
                 >
-                  🛒 Agregar al Carrito
+                  🛒 Add to cart
                 </Button>
                 
                 <Button
@@ -172,7 +163,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   size="large"
                   className={styles.buyNowButton}
                 >
-                  💳 Comprar Ahora
+                  💳 Buy now
                 </Button>
               </div>
             )}

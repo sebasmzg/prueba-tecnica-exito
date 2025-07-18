@@ -8,7 +8,6 @@ interface CheckoutSummaryProps {
   items: ICartItem[];
   subtotal: number;
   shipping?: number;
-  tax?: number;
   discount?: number;
   isCollapsed?: boolean;
   onToggleCollapse?: () => void;
@@ -18,7 +17,6 @@ export const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({
   items,
   subtotal,
   shipping = 5.00,
-  tax = 0,
   discount = 0,
   isCollapsed = false,
   onToggleCollapse

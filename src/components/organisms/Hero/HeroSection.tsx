@@ -45,7 +45,7 @@ export const HeroSection: React.FC = () => {
                 </Button>
               </Link>
               
-              <Link href="/offers" className={styles.secondaryLink}>
+              <Link href="#" className={styles.secondaryLink}>
                 <Button variant="secondary" size="large" className={styles.secondaryButton}>
                   🏷️ Ver Ofertas
                 </Button>

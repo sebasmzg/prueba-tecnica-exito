@@ -22,7 +22,6 @@
   }
 }
 
-// Sección de imagen
 .imageSection {
   display: flex;
   flex-direction: column;
@@ -59,7 +58,6 @@
   padding: 0 $space-md;
 }
 
-// Nuevos estilos para acciones de carrito
 .cartActions {
   display: flex;
   flex-direction: column;
@@ -93,7 +91,6 @@
   font-size: 1rem;
 }
 
-// Botones de acción
 .actionButtons {
   display: flex;
   flex-direction: column;
@@ -129,7 +126,6 @@
     transform: translateY(0);
   }
   
-  // Efecto de brillo al pasar el mouse
   &::before {
     content: '';
     position: absolute;
@@ -153,7 +149,6 @@
   padding: $space-md $space-lg;
 }
 
-// Sección de información
 .infoSection {
   display: flex;
   flex-direction: column;
@@ -209,7 +204,6 @@
   }
 }
 
-// Nueva sección de información de compra
 .purchaseInfo {
   display: flex;
   flex-direction: column;
@@ -240,7 +234,6 @@
   font-weight: 500;
 }
 
-// Responsive adjustments
 @media (max-width: 768px) {
   .content {
     gap: $space-md;
@@ -301,7 +294,6 @@
   }
 }
 
-// Animaciones especiales para los botones de compra
 @keyframes buyPulse {
   0% {
     box-shadow: 0 0 0 0 rgba(70, 130, 169, 0.7);

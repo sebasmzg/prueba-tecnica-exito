@@ -25,7 +25,7 @@ export const ProductSearch: React.FC<ProductSearchProps> = ({
       <div className={styles.inputGroup}>
         <input
           type="text"
-          placeholder="Filtrar productos..."
+          placeholder="Filter products..."
           value={searchTerm}
           onChange={handleInputChange}
           className={styles.searchInput}

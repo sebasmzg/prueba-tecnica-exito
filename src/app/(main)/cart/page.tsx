@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useCart } from "../infrastructure/hooks";
+import { useCart } from "../../infrastructure/hooks";
 import Image from "next/image";
-import { Pages } from "../core/application/models/pages.enum";
+import { Pages } from "../../core/application/models/pages.enum";
 
 export default function CartPage() {
   const {

@@ -3,9 +3,9 @@
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useProductById } from '@/app/infrastructure/hooks/UseProductById';
-import { useCart } from '@/app/infrastructure/hooks';
-import { Pages } from '@/app/core/application/models/pages.enum';
+import { useProductById } from '../../../infrastructure/hooks/UseProductById';
+import { useCart } from '../../../infrastructure/hooks';
+import { Pages } from '../../../core/application/models/pages.enum';
 
 export default function ProductDetailPage() {
   const params = useParams();

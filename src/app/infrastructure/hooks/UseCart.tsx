@@ -2,9 +2,8 @@
 
 import { IProduct } from "@/app/core/application/dto";
 import { useCartStore } from "@/store/productStore";
-import { get } from "http";
 
-export const UseCart = () => {
+export const useCart = () => {
   const {
     items,
     total,

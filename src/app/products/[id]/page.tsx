@@ -4,16 +4,20 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useProductById } from '@/app/infrastructure/hooks/UseProductById';
+import { useCart } from '@/app/infrastructure/hooks';
+import { Pages } from '@/app/core/application/models/pages.enum';
 
 export default function ProductDetailPage() {
   const params = useParams();
   const productId = params.id as string;
   
   const { product, loading, error, refetch } = useProductById(productId);
+  const { addToCart, isInCart, getItemQuantity, increaseQuantity, decreaseQuantity } = useCart();
 
   if (loading) {
     return (
       <div>
+        <p>Cargando producto...</p>
       </div>
     );
   }
@@ -50,11 +54,14 @@ export default function ProductDetailPage() {
     );
   }
 
+  const inCart = isInCart(product.id);
+  const quantity = getItemQuantity(product.id);
+
   return (
     <div>
       <div>
         <Link 
-          href="/products"
+          href={Pages.products}
         >
           ← Volver a productos
         </Link>
@@ -76,9 +83,18 @@ export default function ProductDetailPage() {
           <p>${product.price}</p>
           
           <div>
-            <button>
-              Agregar al carrito
-            </button>
+            {
+              inCart ? (
+                <div>
+                  <button onClick={()=> decreaseQuantity(product.id)
+                  }>-</button>
+                  <span>Quatity: {quantity}</span>
+                  <button onClick={()=> increaseQuantity(product.id)}>+</button>
+                </div>
+              ) : (
+                <button onClick={()=> addToCart(product)}>Add to Cart</button>
+              )
+            }
           </div>
         </div>
       </div>

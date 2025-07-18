@@ -1,0 +1,130 @@
+@import '../../../styles/variables.scss';
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $background 0%, rgba($accent, 0.05) 100%);
+  padding: $space-lg;
+
+  @media (max-width: 768px) {
+    padding: $space-md;
+  }
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $space-xl;
+  padding-bottom: $space-lg;
+  border-bottom: 2px solid $accent;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $space-md;
+    text-align: center;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: $primary;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: $space-lg;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $space-md;
+  }
+}
+
+.itemCount {
+  color: $text-secondary;
+  font-size: 1rem;
+  font-weight: 600;
+  background: rgba($accent, 0.2);
+  padding: $space-xs $space-sm;
+  border-radius: calc($radius / 2);
+}
+
+.continueShoppingLink {
+  text-decoration: none;
+}
+
+.cartContent {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: $space-xl;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+  }
+}
+
+.cartItems {
+  background: $surface;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: $shadow;
+}
+
+.cartSidebar {
+  position: sticky;
+  top: $space-lg;
+
+  @media (max-width: 1024px) {
+    position: static;
+    order: -1;
+  }
+}
+
+// Animaciones
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeIn 0.6s ease-out;
+}
+
+// Responsive adjustments
+@media (max-width: 480px) {
+  .container {
+    padding: $space-sm;
+  }
+  
+  .header {
+    padding-bottom: $space-md;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .cartContent {
+    gap: $space-md;
+  }
+}

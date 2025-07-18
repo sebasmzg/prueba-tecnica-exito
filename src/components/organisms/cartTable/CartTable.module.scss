@@ -1,0 +1,93 @@
+@import '../../../styles/variables.scss';
+
+.container {
+  padding: $space-md 0;
+}
+
+.tableWrapper {
+  overflow: hidden;
+  border-radius: $radius;
+  border: 1px solid $border;
+  background: $surface;
+  box-shadow: $shadow;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.headerRow {
+  background: rgba($accent, 0.1);
+}
+
+.imageHeader,
+.productHeader,
+.priceHeader,
+.quantityHeader,
+.subtotalHeader,
+.actionHeader {
+  padding: $space-md;
+  text-align: left;
+  color: $text-primary;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-bottom: 1px solid $border;
+}
+
+.imageHeader {
+  width: 60px;
+}
+
+.productHeader {
+  min-width: 200px;
+}
+
+.priceHeader {
+  width: 150px;
+}
+
+.quantityHeader {
+  width: 150px;
+}
+
+.subtotalHeader {
+  width: 120px;
+}
+
+.actionHeader {
+  width: 100px;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .imageHeader {
+    display: none;
+  }
+  
+  .priceHeader,
+  .subtotalHeader {
+    display: none;
+  }
+  
+  .productHeader {
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .actionHeader {
+    display: none;
+  }
+  
+  .table {
+    font-size: 0.8rem;
+  }
+  
+  .imageHeader,
+  .productHeader,
+  .quantityHeader {
+    padding: $space-sm;
+  }
+}

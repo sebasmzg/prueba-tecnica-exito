@@ -1,0 +1,338 @@
+@import '../../../styles/variables.scss';
+
+.formContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $space-lg;
+  
+  @media (max-width: 768px) {
+    padding: $space-md;
+    max-width: 100%;
+  }
+}
+
+.form {
+  background: $surface;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  overflow: hidden;
+  border: 1px solid $border;
+  transition: $transition;
+  
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: $space-sm;
+  }
+}
+
+.header {
+  background: linear-gradient(135deg, $primary, $secondary);
+  color: $text-on-primary;
+  padding: $space-xl;
+  text-align: center;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid $secondary;
+  }
+  
+  h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: $space-lg;
+  }
+}
+
+.globalError {
+  margin: $space-lg $space-xl 0;
+  animation: slideInFromTop 0.4s ease-out;
+  
+  @media (max-width: 768px) {
+    margin: $space-lg $space-md 0;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fieldsContainer {
+  padding: $space-xl;
+  margin-bottom: 0;
+  
+  @media (max-width: 768px) {
+    padding: $space-lg $space-md;
+  }
+  
+  > * {
+    margin-bottom: $space-lg;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  > * {
+    animation: fadeInUp 0.6s ease-out both;
+    
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.actions {
+  padding: $space-xl;
+  background: rgba($accent, 0.05);
+  border-top: 1px solid $border;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    padding: $space-lg $space-md;
+  }
+  
+  .submitButton {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+    overflow: hidden;
+    font-size: 1.1rem;
+    padding: $space-md $space-xl;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    &:active::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    &:not(:disabled) {
+      background: linear-gradient(135deg, $primary, $secondary);
+      
+      &:hover {
+        background: linear-gradient(135deg, $secondary, $accent);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(70, 130, 169, 0.4);
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
+    
+    &:disabled {
+      background: $text-muted;
+      cursor: not-allowed;
+      transform: none;
+      
+      &:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.form {
+  &.checkout {
+    max-width: 800px;
+    
+    .fieldsContainer {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $space-lg;
+      
+      @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+        
+        .fullWidth {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+    
+    .header {
+      background: linear-gradient(135deg, $primary, $secondary);
+      
+      h2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $space-sm;
+        
+        &::before {
+          content: '🛒';
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  
+  &.login {
+    max-width: 450px;
+    
+    .header {
+      background: linear-gradient(135deg, $secondary, $accent);
+    }
+  }
+  
+  &.register {
+    max-width: 700px;
+    
+    .fieldsContainer {
+      @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
+
+.form.loading {
+  .fieldsContainer {
+    opacity: 0.7;
+    pointer-events: none;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  .submitButton {
+    cursor: wait;
+  }
+}
+
+.fieldsContainer {
+  .fieldGroup {
+    display: contents;
+    
+    @media (min-width: 768px) {
+      &.address {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: $space-md;
+        background: rgba($accent, 0.05);
+        padding: $space-md;
+        border-radius: $radius;
+        border: 1px solid rgba($accent, 0.3);
+      }
+      
+      &.payment {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: $space-md;
+        background: rgba($primary, 0.05);
+        padding: $space-md;
+        border-radius: $radius;
+        border: 1px solid rgba($primary, 0.3);
+      }
+    }
+  }
+}
+
+.fieldsContainer {
+  .field-error {
+    animation: shake 0.5s ease-in-out;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@media (max-width: 480px) {
+  .formContainer {
+    padding: $space-sm;
+  }
+  
+  .form {
+    border-radius: $space-xs;
+  }
+  
+  .header {
+    padding: $space-md;
+    
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+  
+  .fieldsContainer {
+    padding: $space-md;
+  }
+  
+  .actions {
+    padding: $space-md;
+    
+    .submitButton {
+      font-size: 1rem;
+      padding: $space-sm $space-lg;
+    }
+  }
+}

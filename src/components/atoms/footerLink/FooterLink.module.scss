@@ -1,0 +1,31 @@
+@import '../../../styles/variables.scss';
+
+.link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: $transition;
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    color: $accent;
+    transform: translateX(4px);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: $accent;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}

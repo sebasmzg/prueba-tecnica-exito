@@ -1,0 +1,49 @@
+@import '../../../styles/variables.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.stars {
+  display: flex;
+  gap: $space-xs;
+}
+
+.star {
+  display: inline-block;
+  transition: $transition;
+
+  &.small {
+    font-size: 0.875rem;
+  }
+
+  &.medium {
+    font-size: 1rem;
+  }
+
+  &.large {
+    font-size: 1.25rem;
+  }
+
+  &.filled {
+    color: $primary;
+    filter: brightness(1.1);
+  }
+
+  &.halfFilled {
+    color: $secondary;
+  }
+
+  &.empty {
+    color: $text-muted;
+    opacity: 0.4;
+  }
+}
+
+.value {
+  font-weight: 600;
+  color: $text-primary;
+  font-size: 0.875rem;
+}

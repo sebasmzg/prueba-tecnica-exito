@@ -1,0 +1,129 @@
+@import '../../../styles/variables.scss';
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $background 0%, rgba($accent, 0.1) 100%);
+  padding: $space-lg;
+
+  @media (max-width: 768px) {
+    padding: $space-md;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $space-xl;
+  padding-bottom: $space-lg;
+  border-bottom: 2px solid $accent;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $space-md;
+    text-align: center;
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: $primary;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.navigation {
+  display: flex;
+  gap: $space-md;
+}
+
+.emptyProducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-xl;
+  text-align: center;
+  background: $surface;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  margin: $space-xl auto;
+  max-width: 500px;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: $space-lg;
+  opacity: 0.7;
+}
+
+.emptyTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $text-primary;
+  margin-bottom: $space-sm;
+}
+
+.emptyDescription {
+  color: $text-secondary;
+  margin-bottom: $space-lg;
+  max-width: 300px;
+}
+
+.noSearchResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-xl;
+  text-align: center;
+  background: $surface;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  margin: $space-xl auto;
+  max-width: 500px;
+}
+
+.noResultsIcon {
+  font-size: 3rem;
+  margin-bottom: $space-lg;
+  opacity: 0.6;
+}
+
+.noResultsTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: $text-primary;
+  margin-bottom: $space-sm;
+}
+
+.noResultsDescription {
+  color: $text-secondary;
+  margin-bottom: $space-lg;
+  max-width: 400px;
+  line-height: 1.5;
+
+  strong {
+    color: $primary;
+    font-weight: 600;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeIn 0.5s ease-out;
+}

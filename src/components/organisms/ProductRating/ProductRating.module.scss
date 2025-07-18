@@ -1,0 +1,53 @@
+@import '../../../styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xl;
+  padding: $space-lg;
+  background: $surface;
+  border-radius: $radius;
+  box-shadow: $shadow;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $space-lg;
+    padding: $space-md;
+  }
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  align-items: flex-start;
+}
+
+.rating {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  align-items: center;
+}
+
+.ratingValue {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: $primary;
+  line-height: 1;
+}
+
+.reviewCount {
+  color: $text-secondary;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.breakdown {
+  flex: 1;
+  min-width: 250px;
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+  }
+}

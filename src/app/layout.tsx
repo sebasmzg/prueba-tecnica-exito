@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/molecule/navBar/NavBar";
+import { Footer } from "@/components/organisms";
 
 const lato = Lato({
   weight: ['400', '700'],
@@ -22,9 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lato.variable}`} cz-shortcut-listen="true">
-        header
+        <Header />
         {children}
-        footer
+        <Footer />
       </body>
     </html>
   );

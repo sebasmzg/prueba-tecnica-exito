@@ -1,0 +1,60 @@
+@import '../../../styles/variables.scss';
+
+.breadcrumb {
+  padding: $space-md;
+  background: rgba($accent, 0.1);
+  border-radius: $radius;
+  margin-bottom: $space-lg;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-xs;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+}
+
+.link {
+  color: $primary;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: $transition;
+
+  &:hover {
+    color: $secondary;
+    text-decoration: underline;
+  }
+}
+
+.current {
+  color: $text-primary;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.separator {
+  color: $text-muted;
+  font-weight: normal;
+  margin: 0 $space-xs;
+}
+
+@media (max-width: 480px) {
+  .breadcrumb {
+    padding: $space-sm;
+  }
+  
+  .link,
+  .current {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,304 @@
+@import '../../../styles/variables.scss';
+
+.footer {
+  background: linear-gradient(135deg, 
+    rgba(27, 14, 14, 0.95) 0%, 
+    rgba(70, 130, 169, 0.9) 50%, 
+    rgba(153, 77, 81, 0.95) 100%
+  );
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: $space-xl;
+  padding: $space-xl;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+    padding: $space-lg;
+  }
+}
+
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.brandName {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  background: linear-gradient(135deg, $accent, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.tagline {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.socialMedia {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.socialTitle {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.socialIcons {
+  display: flex;
+  gap: $space-sm;
+  flex-wrap: wrap;
+}
+
+.linksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $space-xl;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-lg;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: $space-md;
+  }
+}
+
+.newsletterSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+}
+
+.contactInfo {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: $radius;
+  padding: $space-lg;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contactTitle {
+  color: white;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin: 0 0 $space-md 0;
+  position: relative;
+  padding-bottom: $space-sm;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, $accent, $secondary);
+    border-radius: 2px;
+  }
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  padding: $space-xs 0;
+  transition: $transition;
+
+  &:hover {
+    color: $accent;
+    transform: translateX(4px);
+  }
+}
+
+.contactIcon {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.footerBottom {
+  padding: $space-lg;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.bottomContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-lg;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $space-md;
+    text-align: center;
+  }
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.paymentMethods {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $space-sm;
+  }
+}
+
+.paymentText {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.paymentIcons {
+  display: flex;
+  gap: $space-sm;
+}
+
+.paymentIcon {
+  font-size: 1.5rem;
+  padding: $space-xs;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: calc($radius / 2);
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding: $space-md;
+  }
+  
+  .footerBottom {
+    padding: $space-md;
+  }
+  
+  .brandName {
+    text-align: center;
+  }
+  
+  .socialIcons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContent {
+    padding: $space-sm;
+    gap: $space-md;
+  }
+  
+  .footerBottom {
+    padding: $space-sm;
+  }
+  
+  .contactInfo {
+    padding: $space-md;
+  }
+  
+  .paymentIcons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.mainContent > * {
+  transition: $transition;
+  
+  &:hover {
+    transform: translateY(-4px);
+  }
+}

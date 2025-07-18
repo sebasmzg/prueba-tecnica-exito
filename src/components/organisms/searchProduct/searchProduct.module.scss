@@ -1,0 +1,57 @@
+@import '../../../styles/variables.scss';
+
+.searchContainer {
+  margin: $space-lg 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.inputGroup {
+  display: flex;
+  gap: $space-sm;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: $space-sm $space-md;
+  border: 1px solid $border;
+  border-radius: $radius;
+  font-size: 1rem;
+  background: $surface;
+  color: $text-primary;
+  transition: $transition;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: $shadow-focus;
+  }
+}
+
+.clearButton {
+  flex-shrink: 0;
+}
+
+.resultsCount {
+  color: $text-secondary;
+  font-size: 0.875rem;
+  font-weight: 500;
+  
+  @media (min-width: 768px) {
+    text-align: right;
+  }
+}

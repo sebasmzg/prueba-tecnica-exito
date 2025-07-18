@@ -1,0 +1,361 @@
+@import '../../../styles/variables.scss';
+
+.header {
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+  box-shadow: $shadow;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $space-md $space-lg;
+  display: flex;
+  align-items: center;
+  gap: $space-lg;
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: $space-sm $space-md;
+    gap: $space-md;
+    flex-wrap: wrap;
+  }
+}
+
+// Logo Section
+.logo {
+  flex-shrink: 0;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  color: $text-on-primary;
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: $transition;
+  text-decoration: none;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.logoIcon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logoText {
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+// Search Section
+.searchSection {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+
+  @media (max-width: 768px) {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.searchForm {
+  position: relative;
+}
+
+.searchContainer {
+  display: flex;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.searchInput {
+  flex: 1;
+  padding: $space-sm $space-md;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  color: $text-primary;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    background: rgba(255, 255, 255, 1);
+  }
+}
+
+.searchButton {
+  border-radius: 0;
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  padding: $space-sm $space-md;
+  font-size: 1rem;
+}
+
+// Search Results
+.searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: $surface;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  border: 1px solid $border;
+  margin-top: $space-xs;
+}
+
+.searchResultItem {
+  padding: $space-sm $space-md;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid $border;
+  transition: $transition;
+
+  &:hover {
+    background: $accent;
+    color: $text-primary;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.resultTitle {
+  font-weight: 500;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: $space-sm;
+}
+
+.resultPrice {
+  font-weight: bold;
+  color: $primary;
+  flex-shrink: 0;
+}
+
+.searchResultsMore {
+  padding: $space-sm $space-md;
+  text-align: center;
+  color: $text-muted;
+  font-size: 0.875rem;
+  background: rgba($accent, 0.3);
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background: rgba($accent, 0.5);
+  }
+}
+
+.noResults {
+  padding: $space-md;
+  text-align: center;
+  color: $text-muted;
+  font-style: italic;
+}
+
+// Navigation
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: $space-lg;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    gap: $space-md;
+  }
+}
+
+.navItems {
+  display: flex;
+  gap: $space-lg;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.navLink {
+  color: $text-on-primary;
+  font-weight: 500;
+  padding: $space-sm $space-md;
+  border-radius: $radius;
+  transition: $transition;
+  text-decoration: none;
+  position: relative;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: $accent;
+    transition: $transition;
+    transform: translateX(-50%);
+  }
+
+  &:hover:after {
+    width: 80%;
+  }
+}
+
+// Cart Button
+.cartButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: $text-on-primary;
+  text-decoration: none;
+  transition: $transition;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+}
+
+.cartIcon {
+  font-size: 1.5rem;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: $error;
+  color: $text-on-primary;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+// Mobile Menu
+.mobileMenuButton {
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: $text-on-primary;
+  font-size: 1.5rem;
+  padding: $space-sm;
+  border-radius: $radius;
+  cursor: pointer;
+  transition: $transition;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: $surface;
+  border-radius: 0 0 $radius $radius;
+  box-shadow: $shadow;
+  padding: $space-md;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  border-top: 1px solid $border;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+.mobileMenuItem {
+  padding: $space-md;
+  color: $text-primary;
+  text-decoration: none;
+  border-radius: $radius;
+  transition: $transition;
+  font-weight: 500;
+
+  &:hover {
+    background: $accent;
+    color: $primary;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .searchSection {
+    width: 100%;
+    margin-top: $space-md;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: $space-sm;
+  }
+
+  .cartBadge {
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+  }
+}

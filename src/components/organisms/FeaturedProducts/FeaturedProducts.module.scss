@@ -1,0 +1,221 @@
+@import '../../../styles/variables.scss';
+
+.section {
+  padding: $space-xl 0;
+  background: $background;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $space-xl;
+
+  @media (max-width: 768px) {
+    padding: 0 $space-lg;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $space-xl;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: $text-primary;
+  margin: 0 0 $space-md 0;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, $primary, $secondary, $accent);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: $text-secondary;
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-xl;
+  margin-bottom: $space-xl;
+
+  @media (max-width: 768px) {
+    gap: $space-lg;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: $space-md;
+  }
+}
+
+.productWrapper {
+  animation: fadeInUp 0.8s ease-out both;
+
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.15}s;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    transition: $transition;
+  }
+}
+
+.actions {
+  text-align: center;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.viewAllLink {
+  text-decoration: none;
+}
+
+.viewAllButton {
+  padding: $space-md $space-xl;
+  font-size: 1.125rem;
+  background: linear-gradient(135deg, $primary, $secondary);
+  
+  &:hover {
+    background: linear-gradient(135deg, $secondary, $accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba($primary, 0.4);
+  }
+}
+
+// Loading states
+.loadingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-xl;
+
+  @media (max-width: 768px) {
+    gap: $space-lg;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: $space-md;
+  }
+}
+
+.loadingCard {
+  background: $surface;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: $shadow;
+  animation: pulse 2s infinite;
+}
+
+.loadingImage {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(90deg, $border 25%, rgba($border, 0.5) 50%, $border 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.loadingContent {
+  padding: $space-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.loadingLine {
+  height: 16px;
+  background: linear-gradient(90deg, $border 25%, rgba($border, 0.5) 50%, $border 75%);
+  background-size: 200% 100%;
+  border-radius: $space-xs;
+  animation: shimmer 2s infinite;
+
+  &:first-child {
+    width: 80%;
+  }
+
+  &:last-child {
+    width: 60%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: $space-lg 0;
+  }
+  
+  .container {
+    padding: 0 $space-md;
+  }
+  
+  .header {
+    margin-bottom: $space-lg;
+  }
+  
+  .productsGrid,
+  .loadingGrid {
+    margin-bottom: $space-lg;
+  }
+}

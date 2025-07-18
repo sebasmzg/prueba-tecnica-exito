@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useProductById } from '@/app/infrastructure/hooks/useProductById';
+import { useProductById } from '@/app/infrastructure/hooks/UseProductById';
 
 export default function ProductDetailPage() {
   const params = useParams();

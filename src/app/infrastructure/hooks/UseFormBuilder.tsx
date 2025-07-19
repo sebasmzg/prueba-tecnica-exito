@@ -1,3 +1,5 @@
+'use client'
+
 import { FormType } from "@/app/core/application/models/form.type";
 import { formSchemas } from "@/app/lib/validation/form.schema";
 import { zodResolver } from "@hookform/resolvers/zod";

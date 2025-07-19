@@ -1,3 +1,4 @@
+'use client'
 
 import { formConfigs } from "@/app/infrastructure/utils/formConfig";
 import { FormProvider } from "react-hook-form";

@@ -79,6 +79,10 @@ export const checkoutSchema = z.object({
 
 export const formSchemas = {
     checkout: checkoutSchema,
-};
+} as const;
 
-export type CheckoutFormData = z.infer<typeof checkoutSchema>;
+export type FormSchemas = typeof formSchemas;
+export type FormSchemaKeys = keyof FormSchemas;
+export type FormSchemaData<T extends FormSchemaKeys> = z.infer<FormSchemas[T]>;
+
+export type CheckoutFormData = FormSchemaData<'checkout'>;

@@ -2,7 +2,6 @@ import { BaseField, FieldType, FormType } from "@/app/core/application/models/fo
 
 export const formConfigs: Record<FormType, BaseField[]> = {
     checkout: [
-        // Personal Information Section
         {
             name: 'firstName',
             label: 'First Name',
@@ -31,8 +30,6 @@ export const formConfigs: Record<FormType, BaseField[]> = {
             required: true,
             placeholder: '+57 300 123 4567'
         },
-
-        // Address Information Section
         {
             name: 'address',
             label: 'Street Address',
@@ -73,8 +70,6 @@ export const formConfigs: Record<FormType, BaseField[]> = {
             required: true,
             placeholder: '50001'
         },
-
-        // Payment Information Section
         {
             name: 'cardNumber',
             label: 'Card Number',
@@ -103,8 +98,6 @@ export const formConfigs: Record<FormType, BaseField[]> = {
             required: true,
             placeholder: '123',
         },
-
-        // Preferences and Terms Section
         {
             name: 'saveInfo',
             label: 'Save information for future purchases',

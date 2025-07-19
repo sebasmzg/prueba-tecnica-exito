@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@use 'styles/variables' as *;
 
 .formContainer {
   max-width: 800px;

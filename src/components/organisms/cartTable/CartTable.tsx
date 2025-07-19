@@ -19,16 +19,14 @@ export const CartTable: React.FC<CartTableProps> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.tableWrapper}>
         <table className={styles.table}>
           <thead>
             <tr className={styles.headerRow}>
-              <th className={styles.imageHeader}>Producto</th>
-              <th className={styles.productHeader}>Nombre</th>
-              <th className={styles.priceHeader}>Precio</th>
-              <th className={styles.quantityHeader}>Cantidad</th>
+              <th className={styles.imageHeader}>Product</th>
+              <th className={styles.productHeader}>Name</th>
+              <th className={styles.priceHeader}>Price</th>
+              <th className={styles.quantityHeader}>Quantity</th>
               <th className={styles.subtotalHeader}>Subtotal</th>
-              <th className={styles.actionHeader}>Acción</th>
             </tr>
           </thead>
           <tbody>
@@ -43,7 +41,6 @@ export const CartTable: React.FC<CartTableProps> = ({
             ))}
           </tbody>
         </table>
-      </div>
     </div>
   );
 };

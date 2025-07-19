@@ -85,7 +85,6 @@
   }
 }
 
-// Checkbox styles
 .checkboxContainer {
   margin-bottom: $space-md;
 }
@@ -116,7 +115,6 @@
   user-select: none;
 }
 
-// Responsive adjustments
 @media (max-width: 768px) {
   .input,
   .textarea,
@@ -146,7 +144,6 @@
   }
 }
 
-// Estados de validación
 .input:valid,
 .textarea:valid,
 .select:valid {
@@ -155,7 +152,6 @@
   }
 }
 
-// Animaciones
 .fieldContainer {
   animation: fadeInUp 0.3s ease-out;
 }
@@ -171,7 +167,6 @@
   }
 }
 
-// Estados hover
 .input:hover,
 .textarea:hover,
 .select:hover {

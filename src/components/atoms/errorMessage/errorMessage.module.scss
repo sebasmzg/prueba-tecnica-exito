@@ -2,7 +2,7 @@
 
 .errorMessage {
   padding: $space-sm $space-md;
-  background-color: rgba(239, 68, 68, 0.1); // Error light background
+  background-color: rgba(239, 68, 68, 0.1);
   border: 1px solid $error;
   border-radius: $radius;
   color: $error;
@@ -10,14 +10,12 @@
   line-height: 1.5;
   margin-top: $space-xs;
   
-  // Ícono de error opcional con pseudo-elemento
   &::before {
     content: "⚠️";
     margin-right: $space-xs;
     font-size: 0.75rem;
   }
 
-  // Animación suave de entrada
   animation: slideIn 0.3s ease-out;
 }
 
@@ -32,7 +30,6 @@
   }
 }
 
-// Variante para diferentes niveles de error
 .errorMessage.warning {
   background-color: rgba(245, 158, 11, 0.1);
   border-color: $warning;
@@ -44,7 +41,7 @@
 }
 
 .errorMessage.info {
-  background-color: rgba(70, 130, 169, 0.1); // Usando tu primary color
+  background-color: rgba(70, 130, 169, 0.1);
   border-color: $primary;
   color: $primary;
 

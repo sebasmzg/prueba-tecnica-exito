@@ -113,7 +113,6 @@
   position: relative;
   overflow: hidden;
   
-  // Efecto de gradiente especial para el botón principal
   background: linear-gradient(135deg, $primary, $secondary);
   
   &:hover {

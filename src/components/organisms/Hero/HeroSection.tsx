@@ -12,42 +12,42 @@ export const HeroSection: React.FC = () => {
         <div className={styles.content}>
           <div className={styles.textContent}>
             <h1 className={styles.title}>
-              Descubre los
-              <span className={styles.highlight}> Mejores Productos</span>
+              Discover the
+              <span className={styles.highlight}> Best Products</span>
               <br />
-              para ti
+              for You
             </h1>
             
             <p className={styles.subtitle}>
-              Encuentra todo lo que necesitas con la mejor calidad y precios increíbles. 
-              Envío gratis en compras mayores a $50.
+              Find everything you need with the best quality and incredible prices. 
+              Free shipping on orders over $50.
             </p>
             
             <div className={styles.features}>
               <div className={styles.feature}>
                 <span className={styles.featureIcon}>🚚</span>
-                <span className={styles.featureText}>Envío gratuito</span>
+                <span className={styles.featureText}>Free Shipping</span>
               </div>
               <div className={styles.feature}>
                 <span className={styles.featureIcon}>🔄</span>
-                <span className={styles.featureText}>Devoluciones fáciles</span>
+                <span className={styles.featureText}>Easy Returns</span>
               </div>
               <div className={styles.feature}>
                 <span className={styles.featureIcon}>⭐</span>
-                <span className={styles.featureText}>Calidad garantizada</span>
+                <span className={styles.featureText}>Guaranteed Quality</span>
               </div>
             </div>
             
             <div className={styles.actions}>
               <Link href={Pages.products} className={styles.primaryLink}>
                 <Button variant="primary" size="large" className={styles.primaryButton}>
-                  🛍️ Explorar Productos
+                  🛍️ Explore Products
                 </Button>
               </Link>
               
               <Link href="#" className={styles.secondaryLink}>
                 <Button variant="secondary" size="large" className={styles.secondaryButton}>
-                  🏷️ Ver Ofertas
+                  🏷️ View Offers
                 </Button>
               </Link>
             </div>
@@ -59,24 +59,24 @@ export const HeroSection: React.FC = () => {
                 <div className={styles.floatingCard}>
                   <span className={styles.cardIcon}>📦</span>
                   <div className={styles.cardContent}>
-                    <span className={styles.cardTitle}>Productos Premium</span>
-                    <span className={styles.cardSubtitle}>Calidad garantizada</span>
+                    <span className={styles.cardTitle}>Premium Products</span>
+                    <span className={styles.cardSubtitle}>Guaranteed Quality</span>
                   </div>
                 </div>
                 
                 <div className={styles.floatingCard} style={{ animationDelay: '0.5s' }}>
                   <span className={styles.cardIcon}>🚚</span>
                   <div className={styles.cardContent}>
-                    <span className={styles.cardTitle}>Envío Rápido</span>
-                    <span className={styles.cardSubtitle}>24-48 horas</span>
+                    <span className={styles.cardTitle}>Fast Shipping</span>
+                    <span className={styles.cardSubtitle}>24–48 hours</span>
                   </div>
                 </div>
                 
                 <div className={styles.floatingCard} style={{ animationDelay: '1s' }}>
                   <span className={styles.cardIcon}>💳</span>
                   <div className={styles.cardContent}>
-                    <span className={styles.cardTitle}>Pago Seguro</span>
-                    <span className={styles.cardSubtitle}>SSL Certificado</span>
+                    <span className={styles.cardTitle}>Secure Payment</span>
+                    <span className={styles.cardSubtitle}>SSL Certified</span>
                   </div>
                 </div>
               </div>

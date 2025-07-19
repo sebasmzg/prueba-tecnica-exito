@@ -10,13 +10,13 @@ export const EmptyCart: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.icon}>🛒</div>
-        <h2 className={styles.title}>Tu carrito está vacío</h2>
+        <h2 className={styles.title}>Your cart is empty</h2>
         <p className={styles.description}>
-          No tienes productos en tu carrito. ¡Explora nuestra tienda y encuentra algo increíble!
+          You dont have products in cart. ¡Explore our shop and find something incredible!
         </p>
         <Link href={Pages.products} className={styles.shopLink}>
           <Button variant="primary" size="large">
-            Continuar Comprando
+            Continue shopping
           </Button>
         </Link>
       </div>

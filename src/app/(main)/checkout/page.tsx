@@ -26,25 +26,25 @@ export default function CheckoutPage() {
   const steps = [
     {
       id: "info",
-      title: "Información Personal",
+      title: "Personal Information",
       isCompleted: currentStep > 0,
       isActive: currentStep === 0,
     },
     {
       id: "shipping",
-      title: "Dirección de Envío",
+      title: "Shipping Address",
       isCompleted: currentStep > 1,
       isActive: currentStep === 1,
     },
     {
       id: "payment",
-      title: "Método de Pago",
+      title: "Payment Method",
       isCompleted: currentStep > 2,
       isActive: currentStep === 2,
     },
     {
       id: "review",
-      title: "Confirmar Pedido",
+      title: "Review Order",
       isCompleted: false,
       isActive: currentStep === 3,
     },
@@ -82,7 +82,7 @@ ${items
 
     if (!confirmed) {
       console.log("❌ Purchase cancelled by user");
-      return; 
+      return;
     }
 
     setLoading(true);
@@ -91,7 +91,7 @@ ${items
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      alert(`Payment sucessful ✅🤑
+      alert(`Payment successful ✅🤑
         Thank you ${data.firstName} ${data.lastName}!
             Your order has been processed.
 
@@ -117,13 +117,13 @@ ${items
   if (loading) {
     return (
       <div className={styles.container}>
-        <LoadingState message="Cargando checkout..." />
+        <LoadingState message="Loading checkout..." />
       </div>
     );
   }
 
   if (error) {
-    return <div>Ooops I did it again :()</div>;
+    return <div>Oops, something went wrong :(</div>;
   }
 
   if (isEmpty) {
@@ -138,7 +138,7 @@ ${items
     return (
       <div>
         <h1>🛒 Your cart is empty</h1>
-        <p>Add some products before checkout</p>
+        <p>Add some products before proceeding to checkout</p>
         <button onClick={() => router.push("/products")}>Go to Products</button>
       </div>
     );
@@ -152,11 +152,11 @@ ${items
           <div className={styles.headerActions}>
             <Link href={Pages.cart} className={styles.backLink}>
               <Button variant="secondary" size="small">
-                ← Volver al carrito
+                ← Back to Cart
               </Button>
             </Link>
             <span className={styles.itemCount}>
-              {totalQuantity} producto{totalQuantity !== 1 ? "s" : ""}
+              {totalQuantity} item{totalQuantity !== 1 ? "s" : ""}
             </span>
           </div>
         </div>
@@ -167,7 +167,7 @@ ${items
           <div className={styles.formSection}>
             <DynamicForm
               type="checkout"
-              title="Información de Compra"
+              title="Checkout Information"
               onSubmit={handleCheckout}
               isLoading={loading}
               globalError={error}
@@ -184,18 +184,18 @@ ${items
             <div className={styles.securityNotice}>
               <div className={styles.securityIcon}>🔒</div>
               <div className={styles.securityText}>
-                <h4>Compra Segura</h4>
-                <p>Tus datos están protegidos con encriptación</p>
+                <h4>Secure Checkout</h4>
+                <p>Your data is protected with encryption</p>
               </div>
             </div>
 
             <div className={styles.supportInfo}>
-              <h4>¿Necesitas ayuda?</h4>
-              <p>Contáctanos:</p>
+              <h4>Need help?</h4>
+              <p>Contact us:</p>
               <ul>
                 <li>📞 +57 (555) 123-4567</li>
                 <li>📧 support@ptexito.com</li>
-                <li>💬 Chat en vivo disponible 24/7</li>
+                <li>💬 Live chat available 24/7</li>
               </ul>
             </div>
           </div>

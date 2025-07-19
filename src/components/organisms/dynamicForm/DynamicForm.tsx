@@ -55,7 +55,7 @@ export const DynamicForm = ({
               isLoading={isLoading}
               className={styles.submitButton}
             >
-              {isLoading ? "Procesando..." : "Enviar"}
+              {isLoading ? "Processing..." : "Submit"}
             </Button>
           </div>
         </form>

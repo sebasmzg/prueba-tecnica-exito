@@ -9,34 +9,34 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const companyLinks = [
-    { label: 'Acerca de nosotros', href: '/about' },
-    { label: 'Nuestra historia', href: '/history' },
-    { label: 'Carreras', href: '/careers' },
-    { label: 'Prensa', href: '/press' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Our History', href: '/history' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Press', href: '/press' },
     { label: 'Blog', href: '/blog' }
   ];
 
   const customerServiceLinks = [
-    { label: 'Centro de ayuda', href: '/help' },
-    { label: 'Contacto', href: '/contact' },
-    { label: 'Envíos y devoluciones', href: '/shipping' },
-    { label: 'Guía de tallas', href: '/size-guide' },
+    { label: 'Help Center', href: '/help' },
+    { label: 'Contact', href: '/contact' },
+    { label: 'Shipping & Returns', href: '/shipping' },
+    { label: 'Size Guide', href: '/size-guide' },
     { label: 'FAQs', href: '/faq' }
   ];
 
   const legalLinks = [
-    { label: 'Términos y condiciones', href: '/terms' },
-    { label: 'Política de privacidad', href: '/privacy' },
-    { label: 'Política de cookies', href: '/cookies' },
-    { label: 'Derechos del consumidor', href: '/consumer-rights' }
+    { label: 'Terms & Conditions', href: '/terms' },
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Cookie Policy', href: '/cookies' },
+    { label: 'Consumer Rights', href: '/consumer-rights' }
   ];
 
   const shopLinks = [
-    { label: 'Todos los productos', href: Pages.products },
-    { label: 'Ofertas especiales', href: '/offers' },
-    { label: 'Nuevos productos', href: '/new-arrivals' },
-    { label: 'Más vendidos', href: '/bestsellers' },
-    { label: 'Liquidación', href: '/clearance' }
+    { label: 'All Products', href: Pages.products },
+    { label: 'Special Offers', href: '/offers' },
+    { label: 'New Arrivals', href: '/new-arrivals' },
+    { label: 'Best Sellers', href: '/bestsellers' },
+    { label: 'Clearance', href: '/clearance' }
   ];
 
   const socialLinks = [
@@ -50,23 +50,20 @@ export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* Main Footer Content */}
         <div className={styles.mainContent}>
-          {/* Brand Section */}
           <div className={styles.brandSection}>
             <div className={styles.logo}>
               <h3 className={styles.brandName}>PT Éxito</h3>
-              <p className={styles.tagline}>Tu destino para las mejores compras</p>
+              <p className={styles.tagline}>Your destination for the best shopping</p>
             </div>
             
             <p className={styles.description}>
-              Ofrecemos productos de alta calidad con la mejor experiencia de compra online. 
-              Descubre nuestras ofertas exclusivas y disfruta de envíos rápidos y seguros.
+              We offer high-quality products with the best online shopping experience. 
+              Discover our exclusive deals and enjoy fast and secure shipping.
             </p>
             
-            {/* Social Media */}
             <div className={styles.socialMedia}>
-              <h4 className={styles.socialTitle}>Síguenos</h4>
+              <h4 className={styles.socialTitle}>Follow us</h4>
               <div className={styles.socialIcons}>
                 {socialLinks.map((social, index) => (
                   <SocialIcon
@@ -80,20 +77,16 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Links Sections */}
           <div className={styles.linksGrid}>
-            <FooterSection title="Tienda" links={shopLinks} />
-            <FooterSection title="Empresa" links={companyLinks} />
-            <FooterSection title="Atención al Cliente" links={customerServiceLinks} />
+            <FooterSection title="Shop" links={shopLinks} />
+            <FooterSection title="Company" links={companyLinks} />
+            <FooterSection title="Customer Service" links={customerServiceLinks} />
             <FooterSection title="Legal" links={legalLinks} />
           </div>
 
-          {/* Newsletter Section */}
           <div className={styles.newsletterSection}>
-            
-            {/* Contact Info */}
             <div className={styles.contactInfo}>
-              <h4 className={styles.contactTitle}>Contacto</h4>
+              <h4 className={styles.contactTitle}>Contact</h4>
               <div className={styles.contactDetails}>
                 <div className={styles.contactItem}>
                   <span className={styles.contactIcon}>📞</span>
@@ -105,26 +98,25 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className={styles.contactItem}>
                   <span className={styles.contactIcon}>📍</span>
-                  <span>123 centro St, Medellin, Antioquia</span>
+                  <span>123 Centro St, Medellín, Antioquia</span>
                 </div>
                 <div className={styles.contactItem}>
                   <span className={styles.contactIcon}>🕒</span>
-                  <span>Lun-Vie: 9AM-6PM, Sáb: 10AM-4PM</span>
+                  <span>Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Footer Bottom */}
         <div className={styles.footerBottom}>
           <div className={styles.bottomContent}>
             <p className={styles.copyright}>
-              © {currentYear} Jorge Sebastian Muñoz. Todos los derechos reservados.
+              © {currentYear} Jorge Sebastian Muñoz. All rights reserved.
             </p>
             
             <div className={styles.paymentMethods}>
-              <span className={styles.paymentText}>Métodos de pago:</span>
+              <span className={styles.paymentText}>Payment methods:</span>
               <div className={styles.paymentIcons}>
                 <span className={styles.paymentIcon} title="Visa">💳</span>
                 <span className={styles.paymentIcon} title="Mastercard">💳</span>

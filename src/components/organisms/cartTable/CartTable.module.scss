@@ -4,13 +4,6 @@
   padding: $space-md 0;
 }
 
-.tableWrapper {
-  overflow: hidden;
-  border-radius: $radius;
-  border: 1px solid $border;
-  background: $surface;
-  box-shadow: $shadow;
-}
 
 .table {
   width: 100%;
@@ -60,7 +53,6 @@
   width: 100px;
 }
 
-// Responsive
 @media (max-width: 768px) {
   .imageHeader {
     display: none;

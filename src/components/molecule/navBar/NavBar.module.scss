@@ -11,9 +11,10 @@
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   padding: $space-md $space-lg;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: $space-lg;
   position: relative;
@@ -25,7 +26,6 @@
   }
 }
 
-// Logo Section
 .logo {
   flex-shrink: 0;
 }
@@ -34,11 +34,10 @@
   display: flex;
   align-items: center;
   gap: $space-sm;
-  color: $text-on-primary;
-  font-weight: bold;
-  font-size: 1.5rem;
-  transition: $transition;
   text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $text-on-primary;
 
   &:hover {
     transform: scale(1.05);
@@ -56,7 +55,6 @@
   }
 }
 
-// Search Section
 .searchSection {
   flex: 1;
   max-width: 500px;
@@ -90,6 +88,9 @@
   font-size: 1rem;
   background: transparent;
   color: $text-primary;
+  border: 1px solid $border;
+  border-right: none;
+  border-radius: $radius 0 0 $radius;
 
   &::placeholder {
     color: $text-muted;
@@ -101,14 +102,9 @@
 }
 
 .searchButton {
-  border-radius: 0;
-  border-top-right-radius: $radius;
-  border-bottom-right-radius: $radius;
-  padding: $space-sm $space-md;
-  font-size: 1rem;
+  border-radius: 0 $radius $radius 0;
 }
 
-// Search Results
 .searchResults {
   position: absolute;
   top: 100%;
@@ -179,7 +175,6 @@
   font-style: italic;
 }
 
-// Navigation
 .navigation {
   display: flex;
   align-items: center;
@@ -231,7 +226,6 @@
   }
 }
 
-// Cart Button
 .cartButton {
   position: relative;
   display: flex;
@@ -279,7 +273,6 @@
   100% { transform: scale(1); }
 }
 
-// Mobile Menu
 .mobileMenuButton {
   display: none;
   background: rgba(255, 255, 255, 0.1);
@@ -335,7 +328,6 @@
   }
 }
 
-// Responsive adjustments
 @media (max-width: 768px) {
   .container {
     flex-direction: row;

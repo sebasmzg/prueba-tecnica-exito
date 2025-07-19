@@ -84,7 +84,6 @@
   font-size: 1rem;
 }
 
-// Estados de los pasos
 .step.pending {
   .stepCircle {
     background: $background;
@@ -149,7 +148,6 @@
   }
 }
 
-// Conectores
 .connector {
   flex: 1;
   height: 3px;

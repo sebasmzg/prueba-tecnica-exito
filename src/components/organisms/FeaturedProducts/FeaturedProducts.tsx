@@ -17,7 +17,7 @@ export const FeaturedProducts: React.FC = () => {
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.header}>
-            <h2 className={styles.title}>Productos Destacados</h2>
+            <h2 className={styles.title}>Featured products</h2>
           </div>
           <div className={styles.loadingGrid}>
             {[1, 2, 3, 4].map((item) => (
@@ -39,9 +39,9 @@ export const FeaturedProducts: React.FC = () => {
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>🌟 Productos Destacados</h2>
+          <h2 className={styles.title}>🌟 Featured Products</h2>
           <p className={styles.subtitle}>
-            Descubre nuestros productos más populares con las mejores valoraciones
+            Discover our most popular products with the best reviews
           </p>
         </div>
         
@@ -56,7 +56,7 @@ export const FeaturedProducts: React.FC = () => {
         <div className={styles.actions}>
           <Link href={Pages.products} className={styles.viewAllLink}>
             <Button variant="primary" size="large" className={styles.viewAllButton}>
-              Ver Todos los Productos →
+              Discover more products →
             </Button>
           </Link>
         </div>

@@ -12,7 +12,6 @@
   display: flex;
   align-items: center;
 
-  // Patrón de fondo animado
   &::before {
     content: '';
     position: absolute;
@@ -226,7 +225,6 @@
   }
 }
 
-// Visual Content
 .visualContent {
   animation: fadeInRight 1s ease-out;
 

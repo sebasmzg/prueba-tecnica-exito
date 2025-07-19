@@ -5,7 +5,7 @@
   display: block;
   width: 100%;
   padding: $space-sm $space-md;
-  padding-right: 2.5rem; // Espacio para la flecha
+  padding-right: 2.5rem; 
   border: 1px solid $border;
   border-radius: $radius;
   background-color: $surface;
@@ -15,7 +15,6 @@
   transition: all $transition;
   cursor: pointer;
   
-  // Flecha personalizada usando tu paleta
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23749BC2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right $space-sm center;
@@ -26,14 +25,12 @@
     border-color: $border-focus;
     box-shadow: $shadow-focus;
     
-    // Cambiar color de la flecha en focus
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234682A9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
   }
 
   &:hover:not(:disabled) {
-    border-color: $accent; // #91C8E4 (light-blue)
+    border-color: $accent; 
     
-    // Flecha más oscura en hover
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234682A9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
   }
 
@@ -45,7 +42,6 @@
       box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
     }
     
-    // Flecha roja para estado de error
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
   }
 
@@ -55,11 +51,9 @@
     cursor: not-allowed;
     opacity: 0.6;
     
-    // Flecha gris para estado disabled
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
   }
 
-  // Estilos para las opciones
   option {
     background-color: $surface;
     color: $text-primary;
@@ -77,16 +71,14 @@
     }
   }
 
-  // Placeholder styling
   option[value=""] {
     color: $text-muted;
   }
 }
 
-// Variante para select múltiple
 .select[multiple] {
-  padding-right: $space-md; // Sin espacio para flecha
-  background-image: none; // Sin flecha
+  padding-right: $space-md;
+  background-image: none; 
   height: auto;
   min-height: 6rem;
   

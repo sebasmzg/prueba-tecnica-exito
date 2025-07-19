@@ -20,7 +20,7 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
   onCheckout,
   onClearCart
 }) => {
-  const calculatedTax = subtotal * 0.07; // 7% tax
+  const calculatedTax = subtotal * 0.05;
   const finalTotal = subtotal + shipping + calculatedTax - discount;
 
   return (
@@ -32,18 +32,18 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
         </div>
         
         <div className={styles.summaryLine}>
-          <span className={styles.label}>Envío:</span>
+          <span className={styles.label}>Shipping:</span>
           <span className={styles.value}>${shipping.toFixed(2)}</span>
         </div>
         
         <div className={styles.summaryLine}>
-          <span className={styles.label}>Impuestos:</span>
+          <span className={styles.label}>Taxes:</span>
           <span className={styles.value}>${calculatedTax.toFixed(2)}</span>
         </div>
         
         {discount > 0 && (
           <div className={styles.summaryLine}>
-            <span className={styles.label}>Descuento:</span>
+            <span className={styles.label}>Discount:</span>
             <span className={styles.discount}>-${discount.toFixed(2)}</span>
           </div>
         )}
@@ -61,7 +61,7 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
           size="large"
           className={styles.checkoutButton}
         >
-          Proceder al Checkout
+          Go to Checkout
         </Button>
         
         <Button
@@ -70,7 +70,7 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
           size="medium"
           className={styles.clearButton}
         >
-          Vaciar Carrito
+          Clear Cart
         </Button>
       </div>
     </div>

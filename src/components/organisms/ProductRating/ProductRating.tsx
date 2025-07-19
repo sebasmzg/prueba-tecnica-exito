@@ -28,7 +28,7 @@ export const ProductRating: React.FC<ProductRatingProps> = ({
           <StarRating rating={averageRating} size="large" />
         </div>
         <p className={styles.reviewCount}>
-          {totalReviews} reseña{totalReviews !== 1 ? 's' : ''}
+          {totalReviews} review{totalReviews !== 1 ? 's' : ''}
         </p>
       </div>
       

@@ -21,14 +21,14 @@ export const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({
   isCollapsed = false,
   onToggleCollapse
 }) => {
-  const calculatedTax = subtotal * 0.07; // 7% tax
+  const calculatedTax = subtotal * 0.05;
   const finalTotal = subtotal + shipping + calculatedTax - discount;
 
   return (
     <div className={styles.container}>
       <div className={styles.header} onClick={onToggleCollapse}>
         <h3 className={styles.title}>
-          Resumen del Pedido ({items.length} producto{items.length !== 1 ? 's' : ''})
+          Order Summary ({items.length} item{items.length !== 1 ? 's' : ''})
         </h3>
         {onToggleCollapse && (
           <Button variant="secondary" size="small" className={styles.toggleButton}>
@@ -56,20 +56,20 @@ export const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({
               <span className={styles.label}>Subtotal:</span>
               <span className={styles.value}>${subtotal.toFixed(2)}</span>
             </div>
-            
+
             <div className={styles.calcLine}>
-              <span className={styles.label}>Envío:</span>
+              <span className={styles.label}>Shipping:</span>
               <span className={styles.value}>${shipping.toFixed(2)}</span>
             </div>
-            
+
             <div className={styles.calcLine}>
-              <span className={styles.label}>Impuestos:</span>
+              <span className={styles.label}>Taxes:</span>
               <span className={styles.value}>${calculatedTax.toFixed(2)}</span>
             </div>
-            
+
             {discount > 0 && (
               <div className={styles.calcLine}>
-                <span className={styles.label}>Descuento:</span>
+                <span className={styles.label}>Discount:</span>
                 <span className={styles.discount}>-${discount.toFixed(2)}</span>
               </div>
             )}

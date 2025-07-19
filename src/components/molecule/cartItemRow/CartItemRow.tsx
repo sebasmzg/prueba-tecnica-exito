@@ -37,7 +37,7 @@ export const CartItemRow: React.FC<CartItemRowProps> = ({
       </td>
       
       <td className={styles.priceCell}>
-        <span className={styles.unitPrice}>Precio unitario: ${item.product.price}</span>
+        <span className={styles.unitPrice}>Price by unit: ${item.product.price}</span>
       </td>
       
       <td className={styles.quantityCell}>
@@ -73,7 +73,7 @@ export const CartItemRow: React.FC<CartItemRowProps> = ({
           size="small"
           className={styles.removeButton}
         >
-          Eliminar
+          Remove
         </Button>
       </td>
     </tr>

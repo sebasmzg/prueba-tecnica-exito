@@ -9,7 +9,6 @@
   transition: color $transition;
 }
 
-// Tamaños por nivel de heading
 .h1 {
   font-size: 2.5rem;
   margin-top: $space-lg;
@@ -53,20 +52,18 @@
   font-weight: 600;
 }
 
-// Variantes de color usando tu paleta
 .primary {
-  color: $primary; // #4682A9 (dark-blue)
+  color: $primary; 
 }
 
 .secondary {
-  color: $secondary; // #749BC2 (medium-blue)
+  color: $secondary; 
 }
 
 .accent {
-  color: $accent; // #91C8E4 (light-blue)
+  color: $accent; 
 }
 
-// Alineación
 .left {
   text-align: left;
 }
@@ -79,22 +76,6 @@
   text-align: right;
 }
 
-// Efectos hover sutiles
-.title:hover {
-  &.primary {
-    color: $secondary;
-  }
-  
-  &.secondary {
-    color: $primary;
-  }
-  
-  &.accent {
-    color: $medium-blue;
-  }
-}
-
-// Variante especial para títulos principales
 .title.hero {
   background: linear-gradient(135deg, $primary, $secondary, $accent);
   background-clip: text;

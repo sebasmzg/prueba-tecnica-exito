@@ -25,9 +25,9 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
     return (
       <div className={styles.emptyState}>
         <div className={styles.emptyIcon}>🔍</div>
-        <h3 className={styles.emptyTitle}>No se encontraron productos</h3>
+        <h3 className={styles.emptyTitle}>No products found</h3>
         <p className={styles.emptyDescription}>
-          Intenta con otros términos de búsqueda
+          Try using different search terms
         </p>
       </div>
     );

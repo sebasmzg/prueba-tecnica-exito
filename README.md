@@ -127,6 +127,23 @@ $warning: #F59E0B    // Amarillo advertencia
 - Node.js 18 o superior
 - npm, yarn o pnpm
 
+### **Configuración del Entorno**
+Antes de ejecutar el proyecto, debes crear un archivo `.env.local` en la raíz del proyecto:
+
+```bash
+# Crear archivo de variables de entorno
+touch .env.local
+```
+
+Agregar la siguiente variable de entorno:
+
+```env
+# .env.local
+NEXT_PUBLIC_BASE_URL=https://fakestoreapi.com
+```
+
+> **Nota**: Esta URL apunta a la Fake Store API que se utiliza para obtener los datos de productos en el proyecto.
+
 ### **Instalación**
 ```bash
 # Clonar el repositorio

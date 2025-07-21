@@ -130,7 +130,7 @@ $warning: #F59E0B    // Amarillo advertencia
 ### **Instalación**
 ```bash
 # Clonar el repositorio
-git clone [URL_DEL_REPOSITORIO]
+git clone https://github.com/sebasmzg/prueba-tecnica-exito.git
 cd pt-exito
 
 # Instalar dependencias
